@@ -1,0 +1,94 @@
+:root {
+    --Text: #222;
+    --Light-Background: #F2F2F2;
+    --Gray: #757575;
+    --Link: #0085FF;
+}
+
+body {
+    color: var(--Text);
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+b {
+    font-weight: 700;
+}
+
+a {
+    color: var(--Link);
+    cursor: pointer;
+}
+
+ul {
+    padding-left: 1rem;
+}
+
+li {
+  list-style-type: "● ";
+}
+
+.wrapper {
+    max-width: 900px;
+}
+
+.aboutMe {
+    background-color: var(--Light-Background);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.table {
+    display: table;
+}
+  
+.tr {
+    display: table-row;
+}
+
+.th, .td {
+    display: table-cell;
+    padding-top: 2rem;
+}
+
+.datePeriod {
+    color: var(--Gray);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 120%;
+    white-space: nowrap;
+    padding-right: 1.5rem;
+}
+
+.experienceUnit {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experienceUnit h2 {
+    margin-bottom: -0.5rem;
+}
