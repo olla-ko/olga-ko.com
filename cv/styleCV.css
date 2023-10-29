@@ -72,7 +72,7 @@ li {
 
 .links ul{
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     color: var(--Link);
     margin-left: -1.25rem;
 }
