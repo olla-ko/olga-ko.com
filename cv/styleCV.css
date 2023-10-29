@@ -92,6 +92,11 @@ li::marker {
     list-style: none;
 }
 
+.bullet{
+    font-size: 19px;
+    line-height: 22px;
+}
+
 .aboutMe {
     background-color: var(--Light-Background);
     padding-left: 26px;
