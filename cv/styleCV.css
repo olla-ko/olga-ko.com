@@ -72,6 +72,7 @@ li::marker {
 
 .portrait img {
     border-radius: 2px;
+    padding-bottom: 0.5rem;
 }
 
 .portrait ul {
