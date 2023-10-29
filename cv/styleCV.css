@@ -72,14 +72,17 @@ li {
 
 .links ul{
     display: flex;
-    gap: 2rem;
+    gap: 1.75rem;
     color: var(--Link);
     margin-left: -1.25rem;
 }
 
 .aboutMe {
     background-color: var(--Light-Background);
-    padding: 24px;
+    padding-left: 26px;
+    padding-top: 24px;
+    padding-right: 26px;
+    padding-bottom: 26px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
