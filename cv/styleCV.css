@@ -80,7 +80,7 @@ li {
 .aboutMe {
     background-color: var(--Light-Background);
     padding: 24px;
-    border-radius: 16px;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
