@@ -85,7 +85,6 @@ li::marker {
     display: flex;
     gap: 0.5rem;
     color: var(--Link);
-    margin-left: -1.25rem;
 }
 
 .links li{
