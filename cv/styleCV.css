@@ -83,13 +83,18 @@ li::marker {
 
 .links ul{
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     color: var(--Link);
     margin-left: -1.25rem;
 }
 
 .links li{
     list-style: none;
+}
+
+.bullet{
+    font-size: 19px;
+    line-height: 22px;
 }
 
 .aboutMe {
