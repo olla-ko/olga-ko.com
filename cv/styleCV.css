@@ -3,6 +3,7 @@
     --Light-Background: #F2F2F2;
     --Gray: #757575;
     --Link: #0085FF;
+    --Link-Hover: rgba(0,133,255, .75);
 }
 
 body {
@@ -39,7 +40,8 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--Link-Hover);
+    text-decoration: none;
 }
 
 ul {
