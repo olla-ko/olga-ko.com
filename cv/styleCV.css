@@ -62,7 +62,7 @@ li::marker {
 }
 
 .wrapper {
-    max-width: 850px;
+    max-width: 900px;
 }
 
 .portrait {
@@ -85,6 +85,7 @@ li::marker {
     display: flex;
     gap: 0.5rem;
     color: var(--Link);
+    margin-left: -1.25rem;
 }
 
 .links li{
@@ -92,8 +93,8 @@ li::marker {
 }
 
 .bullet{
-    font-size: 19px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .aboutMe {
