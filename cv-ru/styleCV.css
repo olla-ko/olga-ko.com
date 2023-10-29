@@ -1,0 +1,155 @@
+:root {
+    --Text: #222;
+    --TextSecondary: rgba(0, 0, 0, .65);;
+    --Light-Background: #F2F2F2;
+    --Gray: #757575;
+    --Link: #0085FF;
+    --Link-Hover: rgba(0, 133, 255, .75);
+}
+
+body {
+    color: var(--Text);
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2.75rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: -.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+a {
+    color: var(--Link);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--Link-Hover);
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 1.25rem;
+}
+
+li {
+    list-style: disc;
+    padding-top: .25rem;;
+}
+
+li::marker {
+    color: var(--TextSecondary);
+}
+
+.wrapper {
+    max-width: 850px;
+}
+
+.portrait {
+    padding-right: 1.5rem;
+}
+
+.olla {
+    width: 160px;
+    height: 190px;
+    background-image: url("olla.jpeg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+}
+
+.portrait ul {
+    margin-left: -1.25rem;
+}
+
+.portrait li {
+    list-style: none;
+}
+
+.links ul{
+    display: flex;
+    gap: 1rem;
+    color: var(--Link);
+    margin-left: -1.25rem;
+}
+
+.footer .links ul{
+    gap: .5rem;
+}
+
+.links li{
+    list-style: none;
+}
+
+.bullet{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.aboutMe {
+    background-color: var(--Light-Background);
+    padding-left: 26px;
+    padding-top: 24px;
+    padding-right: 26px;
+    padding-bottom: 26px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: .25rem;
+    margin-bottom: 2rem;
+}
+
+.table {
+    display: table;
+}
+  
+.tr {
+    display: table-row;
+}
+
+.th, .td {
+    display: table-cell;
+    padding-top: 2rem;
+}
+
+.datePeriod {
+    color: var(--Gray);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 140%;
+    white-space: nowrap;
+    padding-right: 1.5rem;
+}
+
+.experienceUnit {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.experienceUnit h2 {
+    margin-bottom: -0.125rem;
+}
