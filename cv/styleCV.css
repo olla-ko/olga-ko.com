@@ -35,6 +35,7 @@ h3 {
 a {
     color: var(--Link);
     cursor: pointer;
+    text-decoration: none;
 }
 
 a:hover {
