@@ -1,5 +1,6 @@
 :root {
     --Text: #222;
+    --TextSecondary: rgba(0, 0, 0, .65);;
     --Light-Background: #F2F2F2;
     --Gray: #757575;
     --Link: #0085FF;
@@ -52,8 +53,12 @@ ul {
 }
 
 li {
-  list-style: disc;
-  padding-top: .25rem;;
+    list-style: disc;
+    padding-top: .25rem;;
+}
+
+li::marker {
+    color: var(--TextSecondary);
 }
 
 .wrapper {
