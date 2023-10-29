@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
 }
 
 h1 {
@@ -29,10 +29,6 @@ h2 {
 }
 
 h3 {
-    font-weight: 700;
-}
-
-b {
     font-weight: 700;
 }
 
@@ -58,6 +54,29 @@ li {
     max-width: 900px;
 }
 
+.portrait {
+    padding-right: 1.5rem;
+}
+
+.portrait img {
+    border-radius: 2px;
+}
+
+.portrait ul {
+    margin-left: -1.25rem;
+}
+
+.portrait li {
+    list-style: none;
+}
+
+.links ul{
+    display: flex;
+    gap: 1.5rem;
+    color: var(--Link);
+    margin-left: -1.25rem;
+}
+
 .aboutMe {
     background-color: var(--Light-Background);
     padding: 24px;
@@ -65,6 +84,8 @@ li {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: .25rem;
+    margin-bottom: 2rem;
 }
 
 .table {
@@ -84,7 +105,7 @@ li {
     color: var(--Gray);
     font-size: 0.875rem;
     font-weight: 400;
-    line-height: 120%;
+    line-height: 140%;
     white-space: nowrap;
     padding-right: 1.5rem;
 }
@@ -97,14 +118,4 @@ li {
 
 .experienceUnit h2 {
     margin-bottom: -0.25rem;
-}
-
-.footer {
-    padding-left: -1.5rem;
-}
-
-.footer ul{
-    display: flex;
-    gap: 1.5rem;
-    color: var(--Link);
 }
