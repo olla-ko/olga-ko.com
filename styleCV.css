@@ -1,9 +1,11 @@
 :root {
     --Text: #222;
-    --TextSecondary: rgba(0, 0, 0, .65);;
-    --Light-Background: #F2F2F2;
-    --Gray: #757575;
-    --Link: #0085FF;
+    --TextSecondary: rgba(0, 0, 0, .6);
+    --TextTertiary: rgba(0, 0, 0, .45);
+    --Light-Background: rgba(0, 0, 0, .05);
+    --Gray-Background: rgba(0, 0, 0, .12);
+    --White-Transparent: rgba(255, 255, 255, .7);
+    --Link: rgba(0, 133, 255, 1);
     --Link-Hover: rgba(0, 133, 255, .75);
 }
 
@@ -25,13 +27,14 @@ body {
 h1 {
     font-size: 2.25rem;
     font-weight: 700;
-    line-height: 100%;
-    margin-bottom: -.25rem;
+    line-height: 130%;
+    margin-bottom: -.5rem;
 }
 
 h2 {
     font-size: 1.5rem;
     font-weight: 700;
+    line-height: 130%;
 }
 
 h3 {
@@ -86,7 +89,7 @@ li::marker {
 
 .links ul{
     display: flex;
-    gap: 1rem;
+    gap: 1.125rem;
     color: var(--Link);
     margin-left: -1.25rem;
 }
@@ -114,7 +117,7 @@ li::marker {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: .25rem;
+    margin-top: .75rem;
     margin-bottom: 2rem;
 }
 
@@ -136,7 +139,7 @@ li::marker {
 }
 
 .datePeriod {
-    color: var(--Gray);
+    color: var(--TextSecondary);
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 140%;
@@ -150,5 +153,40 @@ li::marker {
 }
 
 .experienceUnit h2 {
-    margin-bottom: -0.125rem;
+    margin-bottom: -0.5rem;
+}
+
+.language {
+    background-color: var(--Gray-Background);
+    height: 1.75rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15) inset;
+    padding: 1px;
+    gap: 1px;
+}
+
+.button {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.unSelected {
+    background-color: white;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.01);
+    color: var(--Text);
+}
+
+.unSelected:hover {
+    background-color: var(--White-Transparent);
+}
+
+.selected {
+    color: var(--TextTertiary);
 }
