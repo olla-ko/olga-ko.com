@@ -1,3 +1,17 @@
 .wrapper {
     width: 650px;
 }
+
+.buttons {
+    background-color: var(--Link);
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: .75rem;
+    margin-bottom: 2rem;
+}
