@@ -68,6 +68,10 @@ li::marker {
     max-width: 850px;
 }
 
+.wrapper-main {
+    max-width: 650px;
+}
+
 .olla {
     width: 160px;
     height: 190px;
