@@ -1,0 +1,27 @@
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 130%;
+    margin-bottom: -.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+a {
+    color: var(--Link);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--Link-Hover);
+    text-decoration: none;
+}

@@ -1,0 +1,10 @@
+:root {
+    --Text: #222;
+    --TextSecondary: rgba(0, 0, 0, .6);
+    --TextTertiary: rgba(0, 0, 0, .45);
+    --Light-Background: rgba(0, 0, 0, .05);
+    --Gray-Background: rgba(0, 0, 0, .12);
+    --White-Transparent: rgba(255, 255, 255, .7);
+    --Link: rgba(0, 133, 255, 1);
+    --Link-Hover: rgba(0, 133, 255, .75);
+}
