@@ -18,7 +18,6 @@ function resizeBasedOnReferenceWidth(img, referenceWidth) {
     } else {
       var halfWidth = originalWidth / 2;
       var halfHeight = originalHeight / 2;
-  
       img.style.width = halfWidth + 'px';
       img.style.height = halfHeight + 'px';
     }
@@ -27,7 +26,7 @@ function resizeBasedOnReferenceWidth(img, referenceWidth) {
 // Получаем ширину второго элемента с классом 'td', если он существует
 var tdElements = document.querySelectorAll('.header .tr .td');
 var referenceWidth = tdElements.length > 1 ? tdElements[1].clientWidth : 0;
-var referenceWidth2X = referenceWidth*2
+var referenceWidth2X = referenceWidth*2;
 
 if (referenceWidth === 0) {
   console.error('Не найден второй элемент с классом "td".');
