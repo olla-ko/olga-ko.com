@@ -24,6 +24,16 @@
     gap: 2rem;
 }
 
+.experienceUnit:first-child {
+    padding-top: 4rem;
+    }
+
 .th, .td {
     padding-top: 0rem;
     }
+
+
+.links {
+padding-top: 0rem;
+padding-bottom: 0rem;
+}
