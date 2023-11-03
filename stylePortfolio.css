@@ -35,6 +35,10 @@ h3 {
     padding-top: 1.5rem;
 }
 
+.aboutMe {
+    margin-bottom: 0;
+}
+
 .solving img {
     position: relative;
     top: 4rem;
