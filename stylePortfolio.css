@@ -18,3 +18,7 @@ h2 {
 .tr > .td:first-child {
     width: 4rem;
 }
+
+.experienceUnit:first-child {
+    padding-top: 4rem;
+    }
