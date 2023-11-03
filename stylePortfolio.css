@@ -24,8 +24,12 @@ h4 {
     padding-bottom: .25rem;
 }
 
+p {
+    max-width: 700px;
+}
+
 .wrapper {
-    max-width: 1000px;
+    max-width: 1260px;
 }
 
 .case {
