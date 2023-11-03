@@ -18,6 +18,12 @@ h3 {
     line-height: 140%;
 }
 
+h4 {
+    font-weight: 700;
+    padding-top: .5rem;
+    padding-bottom: .25rem;
+}
+
 .wrapper {
     max-width: 1000px;
 }
@@ -42,4 +48,12 @@ h3 {
 .solving img {
     position: relative;
     top: 4rem;
+}
+
+.screens img {
+    padding-top: 1rem;
+}
+
+.describe {
+    gap: 2rem;
 }
