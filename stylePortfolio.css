@@ -1,14 +1,15 @@
 h1 {
     font-size: 3rem;
     font-weight: 700;
-    line-height: 140%;
+    line-height: 120%;
     padding-bottom: 1rem;
 }
 
 h2 {
     font-size: 2.25rem;
     font-weight: 700;
-    line-height: 140%;
+    line-height: 120%;
+    padding-bottom: 1rem;
 }
 
 h3 {
