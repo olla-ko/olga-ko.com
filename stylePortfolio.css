@@ -15,13 +15,26 @@ h3 {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 140%;
-    padding-top: 1rem;
 }
 
 .wrapper {
     max-width: 1000px;
 }
 
+.case {
+    display: flex;
+    flex-direction: column;
+}
+
 .tr > .td:first-child {
     width: 4rem;
+}
+
+.th, .td {
+    padding-top: 1.5rem;
+}
+
+.solving img {
+    position: relative;
+    top: 4rem;
 }
