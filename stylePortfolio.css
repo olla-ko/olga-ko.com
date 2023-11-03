@@ -26,3 +26,7 @@ h3 {
     width: 4rem;
 }
 
+.portfolioImage {
+    background-size: 50%;
+    background-repeat: no-repeat;;
+}
