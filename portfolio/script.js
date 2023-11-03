@@ -1,39 +1,39 @@
-function resizeImage(img) {
-    // Убедитесь, что изображение полностью загружено
+function resizeImage(img, referenceWidth) {
     if (img.complete) {
-      resizeBasedOnWidth(img);
+      resizeBasedOnReferenceWidth(img, referenceWidth);
     } else {
-      // Если изображение не загружено, подождите, пока оно загрузится
       img.onload = function() {
-        resizeBasedOnWidth(img);
+        resizeBasedOnReferenceWidth(img, referenceWidth);
       };
     }
   }
   
-  function resizeBasedOnWidth(img) {
-    // Получаем исходные размеры изображения
+function resizeBasedOnReferenceWidth(img, referenceWidth) {
     var originalWidth = img.naturalWidth;
     var originalHeight = img.naturalHeight;
     
-    // Проверяем, больше ли ширина изображения 2000px
-    if (originalWidth > 2000) {
-      // Устанавливаем ширину изображения в 1000px
-      // Высота изменится автоматически, чтобы сохранить пропорции
-      img.style.width = '1000px';
+    if (originalWidth > referenceWidth) {
+      img.style.width = '100%';
       img.style.height = 'auto';
     } else {
-      // Вычисляем новые размеры
       var halfWidth = originalWidth / 2;
       var halfHeight = originalHeight / 2;
   
-      // Применяем новые размеры к изображению
       img.style.width = halfWidth + 'px';
       img.style.height = halfHeight + 'px';
     }
   }
   
-  // Получаем все изображения с классом '2X'
+// Получаем ширину второго элемента с классом 'td', если он существует
+var tdElements = document.querySelectorAll('.td');
+var referenceWidth = tdElements.length > 1 ? tdElements[1].clientWidth : 0;
+
+if (referenceWidth === 0) {
+  console.error('Не найден второй элемент с классом "td".');
+  // Можно добавить здесь дополнительную логику обработки отсутствия второго элемента 'td'
+} else {
   var images = document.querySelectorAll('img.doubleSize');
-  
-  // Применяем функцию resizeImage к каждому изображению
-  images.forEach(resizeImage);
+  images.forEach(function(img) {
+    resizeImage(img, referenceWidth);
+  });
+}
