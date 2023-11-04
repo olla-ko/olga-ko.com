@@ -26,19 +26,23 @@ h4 {
 }
 
 p {
-    max-width: 65%;
+    width: 65%;
 }
 
 .wrapper {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .tr > .td:nth-of-type(1) {
     min-width: 4rem;
     width: 4rem;
+}
+
+.tr > .td:nth-of-type(2) {
+    width: 100%;
 }
 
 .th, .td {
@@ -53,14 +57,9 @@ p {
 .aboutMe p {
     max-width: 100%;
 }
-
-.solving {
-    padding-top: 0rem;
-}
-
 .header img {
     position: relative;
-    top: 7rem;
+    width: 50%;
 }
 
 .screens img {
@@ -82,5 +81,5 @@ p {
 .case {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
