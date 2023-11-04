@@ -31,6 +31,9 @@ p {
 
 .wrapper {
     max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .tr > .td:nth-of-type(1) {
@@ -55,9 +58,9 @@ p {
     padding-top: 0rem;
 }
 
-.solving img {
+.header img {
     position: relative;
-    top: 4rem;
+    top: 7rem;
 }
 
 .screens img {
@@ -79,11 +82,5 @@ p {
 .case {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
-}
-
-.experience {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
