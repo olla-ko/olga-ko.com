@@ -83,3 +83,9 @@ p {
     flex-direction: column;
     gap: 1.5rem;
 }
+
+ol > li {
+    list-style: decimal;
+    padding-left: 1.25rem;
+}
+
