@@ -7,7 +7,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1,625rem;
+    font-size: 1.75rem;
     font-weight: 700;
     line-height: 120%;
     padding-bottom: .5rem;
@@ -33,7 +33,7 @@ p {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .tr > .td:nth-of-type(1) {
