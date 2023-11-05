@@ -7,8 +7,15 @@ h3 {
     padding-bottom: 0rem;
 }
 
-.case {
+.wrapper {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+}
+
+.case {
+    gap: 1rem;
 }
 
 .case img {
