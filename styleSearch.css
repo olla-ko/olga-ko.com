@@ -20,7 +20,7 @@ h3 {
 }
 
 .case {
-    gap: 0.5rem;
+    gap: 2rem;
 }
 
 .case img {
@@ -29,7 +29,7 @@ h3 {
 }
 
 .paragraph {
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 ol {
