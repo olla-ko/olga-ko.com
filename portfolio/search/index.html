@@ -70,7 +70,7 @@
           <li>Расширенный поиск не&nbsp;дает выбирать несколько сущностей одного типа: например, несколько контрагентов. Текущих полей для фильтрации, не&nbsp;хватает, надо больше: теги, подразделения, подписант и&nbsp;т.&nbsp;д.</li>
         </ol>
         <p>Кроме того, нельзя сохранить часто используемый шаблон поиска. Пользователи это не&nbsp;просят напрямую, но&nbsp;если смотреть на&nbsp;их&nbsp;сценарии, им&nbsp;это очень нужно.</p>
-        <img src="img/01-01-search.png" class="doubleSize">
+        <img src="../img/01-01-search.png" class="doubleSize">
       </div>
 
       <div class="paragraph">
@@ -92,12 +92,12 @@
           <li>Автоматом выбран раздел, в&nbsp;котором мы&nbsp;находились&nbsp;&mdash; &laquo;Входящие документы&raquo;. Иногда пользователям нужно искать не&nbsp;в&nbsp;конкретном разделе, а&nbsp;во&nbsp;всех сразу. Можно выбрать другой&nbsp;&mdash; в&nbsp;неудаляемой выпадашке.</li>
           <li>Одновременно с&nbsp;фокусом в&nbsp;поле раскрылся список с&nbsp;предложением выбрать тип фильтра, по&nbsp;которому будем искать.</li>
         </ul>
-        <img src="img/01-02-search.png" class="doubleSize">
-        <img src="img/01-03-search.png" class="doubleSize">
+        <img src="../img/01-02-search.png" class="doubleSize">
+        <img src="../img/01-03-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Само поле работает как автокомплит по&nbsp;этому типу поля:</p>
-        <img src="img/01-04-search.png" class="doubleSize">
+        <img src="../img/01-04-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Выбрали контрагента из&nbsp;списка.</p>
@@ -108,7 +108,7 @@
           <li>Фокус автоматом снова встал в&nbsp;поле и&nbsp;появилась выпадашка с&nbsp;типами фильтров&nbsp;&mdash; выбор фильтра и&nbsp;значения можно повторить заново.</li>
           <li>Если дважды кликнуть на&nbsp;токен, он&nbsp;перейдет в&nbsp;режим редактирования: превратится обратно в&nbsp;текст, появится автокомплит по&nbsp;контрагенту.</li>
         </ul>
-        <img src="img/01-05-search.png" class="doubleSize">
+        <img src="../img/01-05-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Выбрали все нужные фильтры и&nbsp;нажали кнопку &laquo;Найти&raquo;.</p>
@@ -117,12 +117,12 @@
           <li>Можно отредактировать значения в&nbsp;токенах и&nbsp;поискать заново.</li>
           <li>Можно сохранить этот поиск как шаблон и&nbsp;использовать его позже.</li>
         </ul>
-        <img src="img/01-06-search.png" class="doubleSize">
+        <img src="../img/01-06-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <h3>Шаблоны фильтров</h3>
         <div class="flexRow">
-          <img src="img/01-07-search.png" class="doubleSize">
+          <img src="../img/01-07-search.png" class="doubleSize">
           <div class="paragraph">
             <p>Если у&nbsp;пользователя есть сохраненные шаблоны поиска, то&nbsp;в&nbsp;раскрывающемся списке с&nbsp;типами фильтров первой строкой будет &laquo;Шаблон поиска&raquo;.</p>
             <p>Эта концепция оказалась сложной в&nbsp;разработке. Поэтому я&nbsp;спроектировала вторую.</p>  
@@ -133,23 +133,23 @@
       <div class="paragraph">
         <h2>Вторая концепция</h2>
         <p>В&nbsp;этой концепции строка с&nbsp;фильтрами находится над списком документов. В&nbsp;строке выводим 4&nbsp;основных фильтра, по&nbsp;которым чаще всего фильтруют пользователи, остальные прячем за&nbsp;ссылкой Все фильтры.</p>
-        <img src="img/01-08-search.png" class="doubleSize">
+        <img src="../img/01-08-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>По&nbsp;клику на&nbsp;одну из&nbsp;ссылок для быстрой фильтрации раскрывается список с&nbsp;набором значений, по&nbsp;которому можно поискать нужное&nbsp;&mdash; поле поиска над строками с&nbsp;чекбоксами.</p>
-        <img src="img/01-09-search.png" class="doubleSize">
+        <img src="../img/01-09-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>После выбора значения строкой ниже добавляется токен с&nbsp;выбранным значением. Цвет токена зависит от&nbsp;типа фильтра. Токен удаляется по&nbsp;крестику и&nbsp;фильтрация сбрасывается. Справа от&nbsp;токенов есть кнопка сброса всех фильтров.</p>
-        <img src="img/01-10-search.png" class="doubleSize">
+        <img src="../img/01-10-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>По&nbsp;кнопке &laquo;Все фильтры&raquo; открывается лайтбокс со&nbsp;всеми возможными фильтрами.</p>
-        <img src="img/01-11-search.png" class="doubleSize">
+        <img src="../img/01-11-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Часть из&nbsp;фильтров&nbsp;&mdash; это кнопки-списки, они в&nbsp;первом столбце. Как и&nbsp;на&nbsp;списке документов, по&nbsp;клику на&nbsp;эти кнопки выпадают списки со&nbsp;значениями с&nbsp;возможностью множественного выбора и&nbsp;поиска по&nbsp;ним. Вот некоторые из&nbsp;них:</p>
-        <img src="img/01-12-search.png" class="doubleSize">
+        <img src="../img/01-12-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>В&nbsp;правой части лайтбокса во&nbsp;второй колонке обычные поля ввода и&nbsp;раскрывающиеся списки с&nbsp;небольшим количеством значений.</p>
@@ -160,17 +160,17 @@
         <h3>Шаблоны фильтров</h3>
         <p>Около выбранных токенов есть ссылка для того, чтобы сохранить этот набор фильтров как шаблон.</p>
         <p>Когда пользователь выбирает шаблон, в&nbsp;нижней части лайтбокса с&nbsp;фильтрами выводятся токены&nbsp;&mdash; фильтры из&nbsp;этого шаблона, а&nbsp;в&nbsp;раскрывающемся списке выводится название шаблона:</p>
-        <img src="img/01-13-search.png" class="doubleSize">
+        <img src="../img/01-13-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Если после этого выбрать еще какие-то фильтры, они добавятся к&nbsp;уже выбранным фильтрам из&nbsp;шаблона, но&nbsp;в&nbsp;поле &laquo;Шаблоны фильтров&raquo; уже не&nbsp;будет выводиться название шаблона, потому что новый набор фильтров ему уже не&nbsp;соответствует.</p>
         <p>Если выбран какой-то шаблон, рядом появляются кнопки редактирования названия и&nbsp;удаления шаблона.</p>
         <p>Шаблон удаляется с&nbsp;подтверждением:</p>
-        <img src="img/01-14-search.png" class="doubleSize">
+        <img src="../img/01-14-search.png" class="doubleSize">
       </div>
       <div class="paragraph">
         <p>Если нет сохраненных шаблонов, то&nbsp;в&nbsp;раскрывающемся списке пишем подсказку&nbsp;&mdash; что нужно сделать, чтобы шаблоны появились.</p>
-        <img src="img/01-15-search.png" class="doubleSize">
+        <img src="../img/01-15-search.png" class="doubleSize">
         <p>Обе концепции еще в&nbsp;работе и&nbsp;дальше запланировано юзабилити тестирование обеих версий. Мы&nbsp;будем смотреть, успешно&nbsp;ли пользователи стправляются с&nbsp;заданием найти в&nbsp;списке нужные документы по&nbsp;определенным условиям, обратим внимание, не&nbsp;возникает&nbsp;ли затруднений в&nbsp;каких-то моментах, как быстро пользователи справляются с&nbsp;поиском или фильтрацией списка.</p>
         <p>После тестирования мы&nbsp;выберем одно из&nbsp;решений, доработаем ри&nbsp;необходимости и&nbsp;добавим онбординг по&nbsp;новым решениям.</p>
       </div>
