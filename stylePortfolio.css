@@ -93,9 +93,9 @@ p {
 .flexRow {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .flexRow p {
-    width: 100%;
+    width: 70%;
 }
