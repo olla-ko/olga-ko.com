@@ -12,11 +12,19 @@ body {
     padding-bottom: 2.75rem;
 }
 
+ol {
+    margin-left: 1.5rem;
+}
+
 ul {
     padding-left: 1.25rem;
 }
 
-li {
+ol > li {
+    list-style: decimal;
+}
+
+ul > li {
     list-style: disc;
     padding-top: .25rem;;
 }

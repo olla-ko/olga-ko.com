@@ -1,91 +1,29 @@
-h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 120%;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-}
-
 h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 120%;
-    padding-bottom: .5rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 140%;
-    padding-bottom: .5rem;
-}
-
-h4 {
-    font-weight: 700;
-    padding-bottom: .25rem;
-}
-
-p {
-    width: 65%;
-}
-
-.wrapper {
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-}
-
-.tr > .td:nth-of-type(1) {
-    min-width: 4rem;
-    width: 4rem;
-}
-
-.tr > .td:nth-of-type(2) {
-    width: 100%;
-}
-
-.th, .td {
     padding-top: .5rem;
 }
 
-.aboutMe {
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.aboutMe p {
-    max-width: 100%;
-}
-.header img {
-    position: relative;
-    width: 50%;
-}
-
-.screens img {
-    padding-top: 1rem;
-}
-
-.paragraph {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.describe {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+h3 {
+    padding-top: .5rem;
+    padding-bottom: 0rem;
 }
 
 .case {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-ol > li {
-    list-style: decimal;
-    padding-left: 1.25rem;
+.case img {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
 }
 
+.paragraph {
+    gap: .5rem;
+}
+
+ol {
+    max-width: 65%;
+}
+
+.flexRow img {
+    padding: 0;
+}

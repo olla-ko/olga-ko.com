@@ -83,3 +83,19 @@ p {
     flex-direction: column;
     gap: 1.5rem;
 }
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.flexRow p {
+    width: 100%;
+}
