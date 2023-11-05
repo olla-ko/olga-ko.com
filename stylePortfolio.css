@@ -87,7 +87,7 @@ p {
 .navigation, .navigation div, .navigation a {
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
+    padding-top: .5rem;
     align-items: center;
     gap: .5rem;
 }
