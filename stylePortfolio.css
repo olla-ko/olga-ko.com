@@ -84,10 +84,12 @@ p {
     gap: 1.5rem;
 }
 
-.navigation {
+.navigation, .navigation div {
     display: flex;
     justify-content: space-between;
     padding-top: 1rem;
+    align-items: center;
+    gap: .5rem;
 }
 
 .flexRow {
