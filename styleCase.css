@@ -10,22 +10,28 @@ h2 {
 
 h3 {
     padding-top: .5rem;
-    padding-bottom: 0rem;
+    padding-bottom: 0;
+}
+
+h4 {
+    padding-top: .5rem;
+    padding-bottom: 0;
 }
 
 .wrapper {
-    max-width: 1100px;
+    width: 1100px;
     display: flex;
     flex-direction: column;
     gap: 0;
 }
 
 .case {
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .case img {
     padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .paragraph {

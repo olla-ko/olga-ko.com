@@ -84,7 +84,7 @@ p {
     gap: 1.5rem;
 }
 
-.navigation, .navigation div {
+.navigation, .navigation div, .navigation a {
     display: flex;
     justify-content: space-between;
     padding-top: 1rem;

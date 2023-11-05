@@ -25,8 +25,8 @@ function resizeBasedOnReferenceWidth(img, referenceWidth) {
 
 // Получаем ширину второго элемента с классом 'td', если он существует
 var width = document.querySelectorAll('.wrapper');
-var referenceWidth = width.clientWidth;
-var referenceWidth2X = referenceWidth*2;
+var referenceWidth = width[0].clientWidth; // Получаем ширину первого элемента
+var referenceWidth2X = referenceWidth * 2;
 
 if (referenceWidth === 0) {
   console.error('Не найден второй элемент с классом "td".');

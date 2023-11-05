@@ -26,6 +26,6 @@ a {
 }
 
 a:hover {
-    color: var(--Link-Hover);
+    opacity: 75%;
     text-decoration: none;
 }
