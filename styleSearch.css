@@ -1,5 +1,6 @@
 h2 {
     padding-top: .5rem;
+    font-size: 1.625rem;
 }
 
 h3 {
@@ -15,11 +16,11 @@ h3 {
 }
 
 .case {
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .case img {
-    padding-top: 1rem;
+    padding-top: .5rem;
     padding-bottom: 0.5rem;
 }
 
