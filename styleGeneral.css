@@ -38,7 +38,7 @@ ul > li {
     padding-top: .25rem;;
 }
 
-li::marker {
+ul li::marker {
     color: var(--TextSecondary);
 }
 

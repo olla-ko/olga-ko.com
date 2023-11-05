@@ -45,3 +45,12 @@ ol {
 .flexRow img {
     padding: 0;
 }
+
+details {
+    padding-bottom: .25rem;
+}
+
+summary {
+    padding-bottom: .25rem;
+}
+
