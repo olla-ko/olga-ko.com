@@ -43,10 +43,11 @@ p {
 
 .tr > .td:nth-of-type(2) {
     width: 100%;
+    vertical-align: top;
 }
 
 .th, .td {
-    padding-top: .5rem;
+    padding: 0;
 }
 
 .aboutMe {
@@ -57,6 +58,13 @@ p {
 .aboutMe p {
     max-width: 100%;
 }
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .header img {
     position: relative;
     width: 50%;
@@ -100,4 +108,8 @@ p {
 
 .flexRow p {
     width: 70%;
+}
+
+.datePeriod {
+    line-height: 2.625rem;
 }
