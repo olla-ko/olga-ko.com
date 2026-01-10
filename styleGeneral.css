@@ -1,6 +1,6 @@
 body {
     color: var(--Text);
-    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 140%;
     font-weight: 400;
@@ -25,21 +25,14 @@ ol {
     gap: 1.5rem;
 }
 
-ul {
-    padding-left: 1.25rem;
-}
-
 ol > li {
     list-style: decimal;
 }
 
 ul > li {
     list-style: disc;
-    padding-top: .25rem;;
-}
-
-ul li::marker {
-    color: var(--TextSecondary);
+    padding-top: .25rem;
+    margin-left: 20px;
 }
 
 .wrapper {
@@ -64,24 +57,34 @@ ul li::marker {
     list-style: none;
 }
 
-.links ul{
+.links ul {
     display: flex;
-    gap: 1.125rem;
-    color: var(--Link);
-    margin-left: -1.25rem;
+    margin-left: -15px;
+}
+
+.links li {
+    list-style: none;
+    display: flex;
+    gap: .25rem;
 }
 
 .footer {
     padding-top: 3rem;
 }
 
-.links li{
-    list-style: none;
+.footer .links ul {
+    margin-left: 0;
+    gap: .75rem;
+}
+
+.footer .links ul li {
+    margin-left: 0px;
 }
 
 .bullet{
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
+    /* list-style-type: disc !important; */
+    margin-left: 2rem;
 }
 
 .aboutMe {

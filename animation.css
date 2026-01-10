@@ -1,0 +1,66 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hide-to-left {
+    0% {
+        margin-left: 0px;
+        opacity: 1;
+    }
+    100% {
+        margin-left: -40px;
+        opacity: 0;
+    }
+}
+
+@keyframes hide-to-right {
+    0% {
+        margin-left: 0px;
+        opacity: 1;
+    }
+    100% {
+        margin-left: 40px;
+        opacity: 0;
+    }
+}
+
+@keyframes show-pdf {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+    50% {
+        scale: 1;
+        min-width: 50px;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+        min-width: 100px;
+    }
+}
+
+@keyframes show-pdf-span {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hide-pdf {
+    0% {
+        margin-left: 0px;
+        opacity: 1;
+    }
+    100% {
+        margin-left: -6px;
+        opacity: 0;
+    }
+}
