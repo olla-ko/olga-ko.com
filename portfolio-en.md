@@ -22,7 +22,7 @@ green
 Solution story in Russian
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/search-and-invitation/
+../portfolio-ru/search-and-invitation/
 
 ---
 
@@ -50,7 +50,7 @@ green
 Solution story in Russian
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/search/
+../portfolio-ru/search/
 
 ---
 
@@ -82,7 +82,7 @@ red
 Solution story in Russian
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/mailing/
+../portfolio-ru/mailing/
 
 ---
 
@@ -115,7 +115,7 @@ red
 Solution story in Russian
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/routes/
+../portfolio-ru/routes/
 
 ---
 
@@ -143,7 +143,7 @@ blue
 Solution story in Russian
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/onboarding-elba
+../portfolio-ru/onboarding-elba
 
 ---
 
