@@ -21,7 +21,7 @@ green
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/search-and-invitation/
+../portfolio-ru/search-and-invitation/
 
 ---
 
