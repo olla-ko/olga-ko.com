@@ -49,7 +49,7 @@ green
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/onboarding-diadoc/
+../portfolio-ru/onboarding-diadoc/
 
 ---
 
@@ -77,7 +77,7 @@ green
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/search/
+../portfolio-ru/search/
 
 ---
 
@@ -109,7 +109,7 @@ red
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/mailing/
+../portfolio-ru/mailing/
 
 ---
 
@@ -141,7 +141,7 @@ red
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/routes/
+../portfolio-ru/routes/
 
 ---
 
@@ -169,7 +169,7 @@ blue
 Рассказ о решении
 
 <<Ссылка кнопки>>
-https://olga-ko.com/portfolio-ru/onboarding-elba
+../portfolio-ru/onboarding-elba
 
 ---
 
