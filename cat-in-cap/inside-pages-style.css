@@ -1,0 +1,27 @@
+body {
+	font-family: 'Segoe UI', Arial, Tahoma, sans-serif;
+	font-size: 15px;
+	margin-bottom: 100px;
+}
+
+a {
+	color: #4C4C4C;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #2786c9;
+}
+
+a p {
+	margin: 0px 0 30px;
+}
+
+div > a {
+	color: #2786c9;
+	text-decoration: none;
+}
+
+a > img:hover {
+	opacity: 0.5;
+}

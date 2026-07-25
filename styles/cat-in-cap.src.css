@@ -1,0 +1,21 @@
+/* Вход сборки Tailwind для блога cat-in-cap (бывший Play CDN v3 + инлайн-конфиг).
+   Собирается в /cat-in-cap/tailwind.css (закоммичен). Палитры sky/slate встроены
+   в v4 с теми же oklch-значениями, что были в конфиге. Слой поверх — style.css. */
+@import "tailwindcss" source(none);
+@source "../cat-in-cap/blog/index.html";
+@source "../cat-in-cap/blog/app.js";
+@source "../cat-in-cap/blog/styleguide.html";
+
+/* тёмная тема классом .dark на <html> (аналог darkMode: "class") */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* max-w-content / max-w-read (бывший theme.extend.maxWidth) */
+  --container-content: 1000px;
+  --container-read: 720px;
+
+  /* брейкпоинт wide: (бывший theme.extend.screens) */
+  --breakpoint-wide: 721px;
+}

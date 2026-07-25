@@ -1,0 +1,108 @@
+<html>
+<head>
+  <title>Подарочек</title>
+  <link rel="apple-touch-icon" href="glory/icon.png">
+  <meta name="apple-mobile-web-app-title" content="Подарочек">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    body {
+      height: 1334px;
+      width: 750px;
+      position: fixed;
+      margin: 0px !important;
+      background-color: #FBF7F1;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      /* background-size: 100%;
+      background-repeat: no-repeat;
+      background-image: url(glory/background1.png); */
+    }
+    .slide {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      position: fixed;
+    }
+    .slide1 {
+      background-image: url(glory/background1.png);
+      z-index: 1;
+    }
+    .slide2 {
+      background-image: url(glory/background2.png);
+      opacity: 0;
+      z-index: 2;
+    }
+    .slide3 {
+      background-image: url(glory/background3.png);
+      opacity: 0;
+      z-index: 3;
+    }
+    .button {
+      height: 160px;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+      position: fixed;
+      z-index: 10;
+      bottom: 120px;
+      opacity: 0;
+    }
+    .button1 {
+      background-image: url(glory/button1.png);
+      visibility: visible;
+    }
+    .button2 {
+      background-image: url(glory/button2.png);
+      visibility: hidden;
+    }
+    .button3 {
+      background-image: url(glory/button3.png);
+      visibility: hidden;
+    }
+    .animated {
+      animation: moveUp 0.5s 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+      -webkit-animation: moveUp 0.5s 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+    @keyframes moveUp {
+      from {bottom: 60px;}
+      to {bottom: 120px;}
+    }
+    @-webkit-keyframes moveUp {
+      from {bottom: 60px;}
+      to {bottom: 120px;}
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="slide slide1" id="slide1"></div>
+  <div class="slide slide2" id="slide2"></div>
+  <div class="slide slide3" id="slide3"></div>
+  <div class=" button button1" id="button1"></div>
+  <div class="button button2" id="button2"></div>
+  <div class="button button3" id="button3"></div>
+</body>
+
+<script>
+  $( "#button1" ).delay( 1000 ).fadeTo( 200 , 1).addClass("animated");
+  $( "#button1" ).click(function() {
+    $( "#slide2" ).fadeTo( 500 , 1);
+    $( "#button1" ).fadeTo( 200 , 0).css("visibility", "hidden");
+    $( "#button2" ).css("visibility", "visible").delay( 1000 ).fadeTo( 200 , 1).addClass("animated");
+  });
+  $( "#button2" ).click(function() {
+    $( "#slide3" ).fadeTo( 500 , 1);
+    $( "#button2" ).fadeTo( 200 , 0).css("visibility", "hidden");
+    $( "#button3" ).css("visibility", "visible").delay( 1000 ).fadeTo( 500 , 1);
+  });
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+---
+# Корень сайта olga-ko.com → перенаправление на портфолио.
+# GitHub Pages отдаёт только статику (серверный 301 недоступен), поэтому редирект
+# клиентский: meta refresh + JS. Разводная («хаб» со всеми разделами) — /home.html.
+permalink: "/index.html"
+---
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=portfolio-ru/">
+  <link rel="canonical" href="https://olga-ko.com/portfolio-ru/">
+  <title>Ольга Коновалова — Product Designer, UX/UI дизайнер</title>
+  <!-- replace вместо assign: не оставляем редирект в истории, чтобы кнопка «Назад»
+       из портфолио не возвращала сюда и не зацикливалась -->
+  <script>window.location.replace("portfolio-ru/");</script>
+</head>
+
+<body>
+  <p>Переходим к <a href="portfolio-ru/">портфолио</a>…</p>
+</body>
+
+</html>

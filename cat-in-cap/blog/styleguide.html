@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гайд стилей — Блог Ольги Коноваловой</title>
+<link rel="icon" href="favicon.ico">
+<link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tailwind.css">
+<link rel="stylesheet" href="style.css?v=tw6">
+<script>
+(function () {
+  const saved = localStorage.getItem("theme");
+  const dark = saved ? saved === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.classList.toggle("dark", dark);
+})();
+</script>
+</head>
+<body class="font-sans bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-[17px] leading-[1.65]">
+
+<header class="relative max-w-content mx-auto px-5 pt-10 pb-[18px]">
+  <button id="theme-toggle" type="button" aria-label="Переключить тему"
+    class="absolute top-8 right-5 rounded-full border border-slate-200 dark:border-slate-700 px-3 py-[3px] text-sm text-slate-500 dark:text-slate-400 hover:text-sky-700 dark:hover:text-sky-400 hover:border-sky-700 dark:hover:border-sky-400">◐</button>
+  <a class="block text-[34px] font-semibold leading-[1.04] tracking-[-0.01em] text-slate-800 dark:text-slate-100 hover:text-sky-700 dark:hover:text-sky-400 hover:no-underline" href="index.html">Гайд стилей</a>
+  <p class="italic text-lg text-slate-500 dark:text-slate-400 mt-1.5">Дизайн-система блога: цвета, типографика, элементы</p>
+  <svg class="masthead-rule block w-full h-[9px] mt-4 text-sky-700 dark:text-sky-400" viewBox="0 0 1000 9" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M3 5.5 C 110 2 190 8 300 5 S 470 2 560 5.5 S 720 8 820 4.5 S 950 3 997 5.5"/>
+  </svg>
+  <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">← <a class="text-sky-700 dark:text-sky-400 hover:underline" href="index.html">вернуться к блогу</a></p>
+</header>
+
+<main class="max-w-content mx-auto px-5 pt-8 pb-16 flex flex-col gap-14">
+
+  <!-- ИДЕЯ -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-3">Идея</h2>
+    <p class="max-w-[68ch] text-slate-500 dark:text-slate-400">
+      «Размеченный блокнот дизайнера»: бумага и шариковая сине-чёрная тушь, чтобы
+      рисунки давали весь цвет. <span class="text-sky-700 dark:text-sky-400 font-medium">Голубой акцент</span> —
+      им «помечают» выбранное (как редлайн), поэтому он редок.
+      Единый шрифт — <span class="font-medium">Inter</span>: и заголовки, и текст, и служебные подписи.
+    </p>
+  </section>
+
+  <!-- ЦВЕТА -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-1">Цвета</h2>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Палитра Tailwind: нейтральные — <code class="font-mono text-[13px]">slate</code>, акцент — <code class="font-mono text-[13px]">sky</code>. Тёмная тема — вариант <code class="font-mono text-[13px]">dark:</code> (слева светлый оттенок, справа тёмный).</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 wide:grid-cols-4 gap-4" id="swatches"></div>
+  </section>
+
+  <!-- ТИПОГРАФИКА -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-5">Типографика</h2>
+    <div class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700">
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-[34px] font-semibold leading-none">Блог Ольги</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter 600 · 34px · вордмарк</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="italic text-lg text-slate-500 dark:text-slate-400">Моя жизнь в словах</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter italic · 18px · подзаголовок</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-[33px] font-semibold leading-tight">Заголовок поста</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter 600 · 33px · h1</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-[26px] font-semibold">Заголовок в ленте</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter 600 · 26px · h2</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-2xl font-semibold text-slate-500 dark:text-slate-400 tabular-nums">2014</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter 600 · 24px · год (tabular-nums)</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-xl font-semibold">Название в списке</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter 600 · 20px</span>
+      </div>
+      <div class="py-4 flex flex-col gap-1">
+        <p class="max-w-[60ch]">Основной текст набирается шрифтом Inter: спокойный, читаемый, рабочий. Latin &amp; Cyrillic — 0123456789.</p>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter · 17px / 1.65 · body</span>
+      </div>
+      <div class="py-4 flex flex-wrap items-baseline gap-x-6 gap-y-1">
+        <span class="text-sm text-slate-500 dark:text-slate-400">5 сентября 2021, 16:20</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Inter · 14px · мета</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- КНОПКИ И ПЕРЕКЛЮЧАТЕЛИ -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-5">Кнопки и переключатели</h2>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">пилюли сортировки/вида — по умолчанию и активная (.active)</span>
+        <div class="sort flex flex-wrap gap-1.5 items-center">
+          <button type="button" class="inline-flex items-center h-9 rounded-full border border-slate-200 dark:border-slate-700 px-4 text-sm text-slate-500 dark:text-slate-400 hover:text-sky-700 dark:hover:text-sky-400 hover:border-sky-700 dark:hover:border-sky-400">по дате</button>
+          <button type="button" class="active inline-flex items-center h-9 rounded-full border border-slate-200 dark:border-slate-700 px-4 text-sm text-slate-500 dark:text-slate-400">по комментариям</button>
+          <button type="button" class="inline-flex items-center h-9 rounded-full border border-slate-200 dark:border-slate-700 px-4 text-sm text-slate-500 dark:text-slate-400 hover:text-sky-700 dark:hover:text-sky-400 hover:border-sky-700 dark:hover:border-sky-400">наведите курсор</button>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">мобильные табы — активный и обычный</span>
+        <div class="mobile-tabs flex gap-2 max-w-sm" style="display:flex">
+          <button type="button" class="active flex-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 py-2 text-[15px] text-slate-500 dark:text-slate-400">Посты</button>
+          <button type="button" class="flex-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 py-2 text-[15px] text-slate-500 dark:text-slate-400">Теги</button>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 max-w-sm">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">поле поиска · h-36px</span>
+        <input type="search" placeholder="Найти" class="h-9 px-4 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-[15px]">
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">кнопка темы</span>
+        <button type="button" class="w-fit rounded-full border border-slate-200 dark:border-slate-700 px-3 py-[3px] text-sm text-slate-500 dark:text-slate-400 hover:text-sky-700 dark:hover:text-sky-400 hover:border-sky-700 dark:hover:border-sky-400">◐</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТЕГИ -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-5">Теги</h2>
+    <div class="grid gap-6 wide:grid-cols-[1fr_220px]">
+      <div class="flex flex-col gap-2">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">пилюли тегов (в мете поста)</span>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag inline-block rounded-full border border-slate-200 dark:border-slate-700 px-2.5 py-px text-[13px] text-slate-500 dark:text-slate-400">рисунки</span>
+          <span class="tag inline-block rounded-full border border-slate-200 dark:border-slate-700 px-2.5 py-px text-[13px] text-slate-500 dark:text-slate-400">человек-мяук</span>
+          <span class="tag inline-block rounded-full border border-slate-200 dark:border-slate-700 px-2.5 py-px text-[13px] text-slate-500 dark:text-slate-400">каллиграфия</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">список тегов (сайдбар)</span>
+        <ul class="tag-list list-none m-0 p-0 text-sm">
+          <li><a class="active flex justify-between gap-2 px-2.5 py-[3px] rounded-lg text-slate-800 dark:text-slate-100" href="#">Все посты <span class="opacity-60 text-[0.85em]">283</span></a></li>
+          <li><a class="flex justify-between gap-2 px-2.5 py-[3px] rounded-lg text-slate-800 dark:text-slate-100 hover:text-sky-700 dark:hover:text-sky-400 hover:no-underline" href="#">рисунки <span class="opacity-60 text-[0.85em]">174</span></a></li>
+          <li><a class="flex justify-between gap-2 px-2.5 py-[3px] rounded-lg text-slate-800 dark:text-slate-100 hover:text-sky-700 dark:hover:text-sky-400 hover:no-underline" href="#">котики <span class="opacity-60 text-[0.85em]">54</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТЕНТНЫЕ ЭЛЕМЕНТЫ -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-5">Контентные элементы</h2>
+    <div class="post-body max-w-[68ch]">
+      <p>Текст внутри поста рендерится из markdown. Ссылки набираются <a class="text-sky-700 dark:text-sky-400 hover:underline" href="#">красным карандашом</a> и подчёркиваются при наведении.</p>
+      <h2>Подзаголовок второго уровня</h2>
+      <p>Между абзацами — воздух. Цитаты оформляются врезкой:</p>
+      <blockquote><p>Так ты же со мной. Контраргументов не было.</p></blockquote>
+      <figure>
+        <img src="images/0007_catforest.png" alt="пример иллюстрации" onerror="this.closest('figure').classList.add('img-missing'); this.remove()">
+        <figcaption>Подпись к картинке — курсив, приглушённый</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- КОММЕНТАРИИ -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-5">Комментарии</h2>
+    <div class="comment bg-slate-100 dark:bg-slate-800 rounded-[10px] px-4 py-3 my-3 max-w-[60ch]">
+      <div class="flex gap-2.5 items-baseline mb-1">
+        <span class="font-semibold">Миша</span>
+        <span class="text-slate-500 dark:text-slate-400 text-[13px]">21 сентября 2012, 18:19</span>
+      </div>
+      <div class="comment-body">
+        <p>С почином, привет, Эгея и вообще!</p>
+        <blockquote><p><strong>Ответ автора:</strong> Спасибо :)</p></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- СИГНАТУРА -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-2">Сигнатура</h2>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 max-w-[60ch]">Рисованная линия красным карандашом под шапкой — единственный «ручной» жест, отсылка к скетчбуку.</p>
+    <svg class="masthead-rule block w-full max-w-md h-[10px] text-sky-700 dark:text-sky-400" viewBox="0 0 1000 9" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M3 5.5 C 110 2 190 8 300 5 S 470 2 560 5.5 S 720 8 820 4.5 S 950 3 997 5.5"/>
+    </svg>
+  </section>
+
+</main>
+
+<footer class="max-w-content mx-auto px-5 pb-10 text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700">
+  <p class="pt-4">Гайд стилей · <a class="hover:text-sky-700 dark:hover:text-sky-400" href="index.html">Блог Ольги Коноваловой</a></p>
+</footer>
+
+<script>
+// палитра токенов → карточки-свотчи
+// палитра Tailwind: роль, [светлый класс, oklch], [тёмный класс, oklch]
+const TOKENS = [
+  ["Фон / страница", "white", "#ffffff", "slate-900", "oklch(20.8% 0.042 265.755)"],
+  ["Текст", "slate-800", "oklch(27.9% 0.041 260.031)", "slate-100", "oklch(96.8% 0.007 247.896)"],
+  ["Приглушённый", "slate-500", "oklch(55.4% 0.046 257.417)", "slate-400", "oklch(70.4% 0.04 256.788)"],
+  ["Акцент (голубой)", "sky-700", "oklch(50% 0.134 242.749)", "sky-400", "oklch(74.6% 0.16 232.661)"],
+  ["Заливка активного", "sky-100", "oklch(95.1% 0.026 236.824)", "sky-950", "oklch(29.3% 0.066 243.157)"],
+  ["Линии / границы", "slate-200", "oklch(92.9% 0.013 255.508)", "slate-700", "oklch(37.2% 0.044 257.287)"],
+  ["Подложка / карточка", "slate-100", "oklch(96.8% 0.007 247.896)", "slate-800", "oklch(27.9% 0.041 260.031)"],
+];
+document.getElementById("swatches").innerHTML = TOKENS.map(([role, lName, lHex, dName, dHex]) => `
+  <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+    <div class="flex h-20">
+      <div class="flex-1" style="background:${lHex}"></div>
+      <div class="flex-1" style="background:${dHex}"></div>
+    </div>
+    <div class="p-3 border-t border-slate-200 dark:border-slate-700">
+      <div class="font-semibold text-[15px]">${role}</div>
+      <div class="font-mono text-[12px] text-slate-500 dark:text-slate-400 mt-1">☀ ${lName} · ${lHex}</div>
+      <div class="font-mono text-[12px] text-slate-500 dark:text-slate-400">🌙 ${dName} · ${dHex}</div>
+    </div>
+  </div>`).join("");
+
+// переключатель темы (как в блоге): .dark на <html>
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  const next = !document.documentElement.classList.contains("dark");
+  const system = matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.classList.toggle("dark", next);
+  if (next === system) localStorage.removeItem("theme");
+  else localStorage.setItem("theme", next ? "dark" : "light");
+});
+</script>
+</body>
+</html>

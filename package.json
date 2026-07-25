@@ -1,0 +1,25 @@
+{
+  "name": "olga-ko-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Статический сайт-портфолио olga-ko.com (GitHub Pages). Tailwind собирается локально в статический tailwind.css.",
+  "scripts": {
+    "build:css": "npm run build:css:site && npm run build:css:blog",
+    "build:css:site": "tailwindcss -i ./styles/tailwind.src.css -o ./tailwind.css --minify",
+    "build:css:blog": "tailwindcss -i ./styles/cat-in-cap.src.css -o ./cat-in-cap/blog/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./styles/tailwind.src.css -o ./tailwind.css --watch",
+    "watch:css:blog": "tailwindcss -i ./styles/cat-in-cap.src.css -o ./cat-in-cap/blog/tailwind.css --watch",
+    "build:site": "eleventy",
+    "build": "npm run build:css && npm run build:site",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@tailwindcss/cli": "^4.1.18",
+    "marked": "^18.0.5",
+    "tailwindcss": "^4.1.18"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

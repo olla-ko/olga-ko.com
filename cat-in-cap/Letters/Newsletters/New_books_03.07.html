@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <title></title> <!-- the <title> tag shows on email notifications on Android 4.4. -->
+  <style type="text/css">
+  	
+  	/* ensure that clients don't add any padding or spaces around the email design and allow us to style emails for the entire width of the preview pane */
+		body,
+		#bodyTable {
+			height:100% !important;
+			width:100% !important;
+			margin:0;
+			padding:0;
+		}
+		
+		a {
+        	text-decoration: none;
+        	color: #3072C4;
+        }
+		
+		
+		           /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: left !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            /* What it does: Adjust typography on small screens to improve readability */
+		
+		/* Ensures Webkit- and Windows-based clients don't automatically resize the email text. */
+		body,
+		table,
+		td,
+		p,
+		a,
+		li,
+		blockquote {
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		
+		/* Forces Yahoo! to display emails at full width */
+		.thread-item.expanded .thread-body .body, .msg-body {
+			width: 100% !important;
+			display: block !important;
+		}
+
+    /* Forces Hotmail to display emails at full width */
+    .ReadMsgBody,
+    .ExternalClass {
+			width: 100%;
+			background-color: #f4f4f4;
+    }
+
+    /* Forces Hotmail to display normal line spacing. */
+		.ExternalClass,
+		.ExternalClass p,
+		.ExternalClass span,
+		.ExternalClass font,
+		.ExternalClass td,
+		.ExternalClass div {
+			line-height:100%;
+    }
+
+    /* Resolves webkit padding issue. */
+    table {
+			border-spacing:0;
+    }
+
+    /* Resolves the Outlook 2007, 2010, and Gmail td padding issue, and removes spacing around tables that Outlook adds. */
+    table,
+    td {
+			border-collapse:collapse;
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+    }
+    
+    /* Corrects the way Internet Explorer renders resized images in emails. */
+    img {
+    	-ms-interpolation-mode: bicubic;
+    }
+    
+    /* Ensures images don't have borders or text-decorations applied to them by default. */
+    img,
+    a img {
+    	border:0;
+    	outline:none;
+    	text-decoration:none;	    
+    }
+
+    /* Styles Yahoo's auto-sensing link color and border */
+    .yshortcuts a {
+			border-bottom: none !important;
+    }
+    
+    /* Styles the tel URL scheme */
+    a[href^=tel],
+		.mobile_link,
+		.mobile_link a {
+	    color:#222222 !important;
+			text-decoration: underline !important;
+    }
+  
+    /* Media queries for when the viewport is smaller than the default email width but not too narrow. */
+    @media screen and (max-device-width: 600px), screen and (max-width: 600px) {
+
+			/* Constrains email width for small screens */
+			table[class="email-container"] {
+				width: 100% !important;
+			}
+			/* Constrains tables for small screens */
+			table[class="fluid"] {
+				width: 100% !important;
+			}
+			
+			/* Forces images to resize to full width of their container */
+			img[class="fluid"],
+			img[class="force-col-center"] {
+				width: 100% !important;
+				max-width: 100% !important;
+				height: auto !important;
+			}
+			/* And centers these ones */
+				img[class="force-col-center"] {
+				margin: auto !important;
+			}
+			
+			/* Forces table cells into rows */
+			td[class="force-col"],
+			td[class="force-col-center"] {
+				display: block !important;
+				width: 100% !important;
+				clear: both;
+			}
+			/* And centers these ones */
+			td[class="force-col-center"] {
+				text-align: left !important;
+			}
+			
+			/* Forces table cells into rows */
+			/* Floats a previously stacked image to the left */
+			img[class="col-3-img-l"] {
+				float: left;
+				margin: 0 15px 15px 0;
+			}
+			/* Floats a previously stacked image to the right */
+			img[class="col-3-img-r"] {
+				float: right;
+				margin: 0 0 15px 15px;
+			}
+			
+			/* Makes buttons full width */
+			table[class="button"] {
+				width: 100% !important;
+			}
+         
+    }
+
+    /* Media queries for when the viewport is narrow. */
+    /* Rules prefixed with 'hh-' (for 'handheld') repeat much of what's above, but these don't trigger until the smaller screen width. */
+    @media screen and (max-device-width: 425px), screen and (max-width: 425px) {
+
+			/* Helper only visible on handhelds. All styles are inline along with a `display:none`, which this class overrides */
+			div[class="hh-visible"] {
+				display: block !important;
+			}
+			
+			/* Center stuff */
+			div[class="hh-center"] {
+				text-align: left; !important;
+				
+			}
+			
+			/* Constrain tables for small screens */
+			table[class="hh-fluid"] {
+				width: 100% !important;
+			}
+			
+			/* Force images to resize to full width of their container */
+			img[class="hh-fluid"],
+			img[class="hh-force-col-center"] {
+				/* width: 100% !important; */
+				max-width: 100% !important;
+				height: auto !important;
+			}
+			/* And center these ones */
+			img[class="hh-force-col-center"] {
+				margin: auto !important;
+			}
+			
+			/* Force table cells into rows */
+			td[class="hh-force-col"],
+			td[class="hh-force-col-center"] {
+				display: block !important;
+				width: 100% !important;
+				clear: both;
+			}
+			
+			/* And center these ones */
+			td[class="hh-force-col-center"] {
+				text-align: left !important;
+			}
+			
+			/* Stack the previously floated images */
+			img[class="col-3-img-l"],
+			img[class="col-3-img-r"] {
+				float: none !important;
+				margin: 15px auto !important;
+				text-align: left !important;
+			}
+
+    }
+          
+  </style>
+  
+  
+  
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0; padding:0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; background: url('https://cat-in-cap.ru/Letters/Pattern_paper.png');">
+
+
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%"  id="bodyTable" style="border-collapse: collapse;table-layout: fixed;margin:0 auto; background: url('https://cat-in-cap.ru/Letters/Pattern_paper.png');">
+
+
+
+
+
+<tr><td>
+
+
+  
+	<!-- Email Header : BEGIN -->
+            <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">
+                <tr>
+                    <td style="padding: 20px 0; height: 20px; text-align: center">
+                        <!-- This TD is needed for padding -->
+                    </td>
+                </tr>
+            </table>
+     <!-- Email Header : END -->
+ 
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="border: 1px solid #e5e5e5;margin: auto;" class="email-container">
+  
+      <!-- Single Fluid Image, No Crop : BEGIN -->
+      <tr>
+        <td>
+          <img src="https://cat-in-cap.ru/Letters/naletay.png" height="350" width="600" border="0" style="display: block;" class="fluid">
+        </td>
+      </tr>
+      <!-- Single Fluid Image, No Crop : END -->	
+    
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="left">
+            
+            <tr>
+				<td style="padding: 30px 40px 0px; text-align: center;">
+					<h1 style="margin: 0; font-size: 26px; line-height: 30px; color: #333333; font-weight: normal;"><font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">В библиотеке пополнение</font></h1>
+				</td>
+            </tr>
+            
+          </table>
+        </td>
+      </tr>
+<!-- Full Width, Fluid Column : END -->
+      
+
+
+
+<!-- 1 книга : BEGIN -->
+      <tr>
+        <td style="padding: 20px 30px 50px 10px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+
+
+            <tr>
+              <td align="center" width="200" valign="top" style="padding-right: 0px; padding-top: 5px;" class="hh-force-col-center">
+                <a href="https://blogovo.skbkontur.ru/library/38e681c0-02cb-4995-a30a-381014914a70"><img src="https://cat-in-cap.ru/Letters/Cover/4_prom_rev.png" width="150" border="0" style="display: block;margin: auto;" class="hh-force-col-center"></a>
+              </td>
+              
+              <td valign="top" class="hh-force-col" style="padding-left: 0;">
+                
+                
+                      <div style="font-size: 18px; line-height: 24px; font-weight: normal;">
+                      <a href="https://blogovo.skbkontur.ru/library/38e681c0-02cb-4995-a30a-381014914a70">
+						<font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Четвертая промышленная революция</font>
+                      </a>
+                      </div>
+                      
+                      <div style="padding: 4px 0px 0px 0px; color: #999999; font-size: 15px; line-height: 20px; font-weight: normal;">
+                      <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Клаус Шваб</font>
+                      </div>
+                      
+                      <div style="color: #333333; margin-top:3pt; font-size: 15px; line-height: 20px; font-weight: normal;">
+                     <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">
+                     Мы&nbsp;стоим у&nbsp;истоков революции, которая изменит&nbsp;то, как мы&nbsp;живем, работаем и&nbsp;общаемся друг с&nbsp;другом. Клаус Шваб, основатель и&nbsp;президент Всемирного экономического форума в&nbsp;Давосе, написал руководство, которое поможет сориентироваться в&nbsp;происходящих изменениях и&nbsp;извлечь из&nbsp;этого максимум выгоды. Книгу посоветовала Ирина Шухман.
+                     </font>
+                     </div>
+                     
+                  
+                  
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+<!-- 1 книга : END -->
+
+
+
+
+  
+  
+<!-- 2 книга : BEGIN -->
+      <tr>
+        <td style="padding: 0px 30px 50px 10px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+
+            <tr>
+              <td align="center" width="200" valign="top" style="padding-right: 0px; padding-top: 5px;" class="hh-force-col-center">
+                <a href="https://blogovo.skbkontur.ru/library/24efdee8-69ba-4576-b1f6-63aa5ae4e6a4"><img src="https://cat-in-cap.ru/Letters/Cover/pravilno_li_my_govorim.png" width="150" border="0" style="display: block;margin: auto;" class="hh-force-col-center"></a>
+              </td>
+              <td valign="top" class="hh-force-col" style="padding-left: 0;">
+                
+                
+                      <div style="font-size: 18px; line-height: 24px; font-weight: normal;">
+                      <a href="https://blogovo.skbkontur.ru/library/24efdee8-69ba-4576-b1f6-63aa5ae4e6a4">
+						<font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Правильно ли мы говорим?</font>
+                      </a>
+                      </div>
+                      
+                      <div style="padding: 4px 0px 0px 0px; color: #999999; font-size: 15px; line-height: 20px; font-weight: normal;">
+                      <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Борис Тимофеев</font>
+                      </div>
+                      
+                      <div style="color: #333333; margin-top:3pt; font-size: 15px; line-height: 20px; font-weight: normal;">
+                     <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">
+Борис Трофимов много лет изучал русскую разговорную речь. В&nbsp;книге он делится своими наблюдениями и&nbsp;думами о&nbsp;живой разговорной речи. Богатый материал книги был собран с&nbsp;помощью фиксации всех неправильностей разговорного языка народа&nbsp;&mdash; от&nbsp;неверного произношения до&nbsp;элементарной безграмотности. Книгу посоветовал Никита Беспамятных.
+                     </font>
+                     </div>
+                     
+                    
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+<!-- 2 книга : END -->
+
+
+
+
+
+  
+<!-- 3 книга : BEGIN -->
+      <tr>
+        <td style="padding: 0px 30px 50px 10px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+
+            <tr>
+              <td align="center" width="200" valign="top" style="padding-right: 0px; padding-top: 5px;" class="hh-force-col-center">
+                <a href="https://blogovo.skbkontur.ru/library/0bb6b708-8e08-4dea-ac79-2703540fce2d"><img src="https://cat-in-cap.ru/Letters/Cover/The_Agile_Mind.png" width="150" border="0" style="display: block;margin: auto;" class="hh-force-col-center"></a>
+              </td>
+              <td valign="top" class="hh-force-col" style="padding-left: 0;">
+                
+                
+                      <div style="font-size: 18px; line-height: 24px; font-weight: normal;">
+                      <a href="https://blogovo.skbkontur.ru/library/0bb6b708-8e08-4dea-ac79-2703540fce2d">
+						<font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Гибкий ум</font>
+                      </a>
+                      </div>
+                      
+                      <div style="padding: 4px 0px 0px 0px; color: #999999; font-size: 15px; line-height: 20px; font-weight: normal;">
+                      <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Эстанислао Бахрах</font>
+                      </div>
+                      
+                      <div style="color: #333333; margin-top:3pt; font-size: 15px; line-height: 20px; font-weight: normal;">
+                     <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">
+Из&nbsp;книги вы&nbsp;узнаете об&nbsp;одной из&nbsp;самых ценных способностей нашего мозга&nbsp;&mdash; воображать несуществующее и&nbsp;генерировать новые идеи. Она&nbsp;развеивает все предрассудки, касающиеся функционирования мозга, и&nbsp;демонстрирует, как работают скрытые творческие процессы, а&nbsp;главное, помогает их&nbsp;усовершенствовать.
+                     </font>
+                     </div>
+                     
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+<!-- 3 книга : END -->
+
+
+
+<!-- 4 книга : BEGIN -->
+      <tr>
+        <td style="padding: 0px 30px 50px 10px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+
+            <tr>
+              <td align="center" width="200" valign="top" style="padding-right: 0px; padding-top: 5px;" class="hh-force-col-center">
+                <a href="https://blogovo.skbkontur.ru/library/f62c302f-3323-4d54-99d9-4a017d8b16d6"><img src="https://cat-in-cap.ru/Letters/Cover/Projector31.png" width="150" border="0" style="display: block;margin: auto;" class="hh-force-col-center"></a>
+              </td>
+              <td valign="top" class="hh-force-col" style="padding-left: 0;">
+                
+                
+                      <div style="font-size: 18px; line-height: 24px; font-weight: normal;">
+                      <a href="https://blogovo.skbkontur.ru/library/f62c302f-3323-4d54-99d9-4a017d8b16d6">
+						<font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Журнал «Проектор» № 31</font>
+                      </a>
+                      </div>
+                      
+                      <div style="padding: 4px 0px 0px 0px; color: #999999; font-size: 15px; line-height: 20px; font-weight: normal;">
+                      <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Издательство «Студия проектор»</font>
+                      </div>
+                      
+                      <div style="color: #333333; margin-top:3pt; font-size: 15px; line-height: 20px; font-weight: normal;">
+                     <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">
+У&nbsp; номера две обложки, и&nbsp;его легко читать с&nbsp;любой стороны. Тематически номер поделен на&nbsp;две части&nbsp;&mdash; про классиков и&nbsp;современных дизайнеров. Историческая часть стала развернутым каталогом выставки &laquo;Легенды датского дизайна&raquo; в&nbsp;ГМИИ им. А.&nbsp;С.&nbsp;Пушкина. Вторая часть посвящена современным датским дизайнерам.
+                     </font>
+                     </div>
+                     
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+<!-- 4 книга : END -->
+
+
+
+<!-- 5 книга : BEGIN -->
+      <tr>
+        <td style="padding: 0px 30px 50px 10px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+
+            <tr>
+              <td align="center" width="200" valign="top" style="padding-right: 0px; padding-top: 5px;" class="hh-force-col-center">
+                <a href="https://blogovo.skbkontur.ru/library/0b7b1ce1-b721-4777-9b6f-061da8ae0767"><img src="https://cat-in-cap.ru/Letters/Cover/Projector32.png" width="150" border="0" style="display: block;margin: auto;" class="hh-force-col-center"></a>
+              </td>
+              <td valign="top" class="hh-force-col" style="padding-left: 0;">
+                
+                
+                      <div style="font-size: 18px; line-height: 24px; font-weight: normal;">
+                      <a href="https://blogovo.skbkontur.ru/library/0b7b1ce1-b721-4777-9b6f-061da8ae0767">
+						<font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Журнал «Проектор» № 32</font>
+                      </a>
+                      </div>
+                      
+                      <div style="padding: 4px 0px 0px 0px; color: #999999; font-size: 15px; line-height: 20px; font-weight: normal;">
+                      <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Издательство «Студия проектор»</font>
+                      </div>
+                      
+                      <div style="color: #333333; margin-top:3pt; font-size: 15px; line-height: 20px; font-weight: normal;">
+                     <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">
+Номер разделен на&nbsp;две части&nbsp;&mdash; историческую и&nbsp;современную, и&nbsp;в&nbsp;основном посвящен французскому плакату.
+                     </font>
+                     </div>
+                     
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+<!-- 5 книга : END -->
+
+
+
+
+
+<!-- Цветной блок : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table bgcolor="#fff3c1" role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" width="100%">
+
+
+                            <tr>
+                                <td style="padding: 40px 60px 10px 60px; font-size: 18px; line-height: 24px; color: #333333; text-align: center;">
+                                    <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Приходи в Эльбу порыться в книгах на полке. <br>Чтобы взять книгу, сначала спроси меня. <br>Лень идти — вот&nbsp;<a href="https://blogovo.skbkontur.ru/library">полный список книг в Блогове</font>
+                                </td>
+                            </tr>
+
+                            
+                           	<tr>
+                                <td style="padding: 5px 60px 40px 60px; font-size: 18px; line-height: 24px; color: #333333; text-align: center;">
+                                    <font face="Segoe UI,Helvetica Neue,Arial,Tahoma,sans-serif">Предлагай книги в&nbsp;библиотеку — мы купим.</font>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+<!-- Цветной блок : END -->
+                
+
+                
+<!-- Приятного чтения : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" style="padding: 30px 0px 26px 0px;">
+                        <a href="https://staff.skbkontur.ru/profile/romanova?m=fe-b06691e222e44650b061594821d42c16">
+                        <img src="https://cat-in-cap.ru/Letters/coffee.png" width="140" height="141" border="0" class="hh-force-col-center">
+                        </a>
+                    </td>
+                </tr>
+<!-- Приятного чтения : END -->
+
+
+
+<!-- Clear Spacer : BEGIN -->
+                <tr>
+                    <td height="20" bgcolor="#28af9c" style="font-size: 0; line-height: 0;">
+                        &nbsp;
+                    </td>
+                </tr>
+<!-- Clear Spacer : END -->
+
+
+
+
+</table>
+<!-- Email Container : END -->
+  
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 20px;font-family: sans-serif; font-size: 12px; line-height: 18px;color: #999999;">
+        Если в письме что-то сильно съехало, напиши мне<br><br>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
+</html>

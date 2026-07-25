@@ -1,0 +1,328 @@
+/* Вход для сборки Tailwind. Собирается локально в /tailwind.css (закоммичен).
+   Сканируем разводную и лендинги портфолио — Tailwind применяется к ним. */
+@import "tailwindcss" source(none);
+@source "../index.html";
+@source "../src";
+@source "../portfolio-ru";
+@source "../portfolio-en";
+
+@theme {
+  /* Единый шрифт всего сайта */
+  --font-sans: "Inter", "Inter var", ui-sans-serif, system-ui, sans-serif;
+
+  /* Базовые цвета */
+  --color-brand: #6753e6;        /* = primary */
+  --color-brand-strong: #543fd4; /* = primary-hover */
+  --color-ink: #222222;          /* основной текст ссылок */
+
+  /* Палитра лендинга портфолио (перенесена из colors-portfolio.css, значения те же) */
+  --color-primary: #6753e6;
+  --color-primary-hover: #543fd4;
+  --color-primary-active: #4331b6;
+  --color-green: #00a38b;
+  --color-green-hover: #00907b;
+  --color-green-active: #007866;
+  --color-red: #ff6d42;
+  --color-red-hover: #f35829;
+  --color-red-active: #e34110;
+  --color-blue: #3f69ff;
+  --color-blue-hover: #2553f6;
+  --color-blue-active: #1642de;
+  --color-card-green: #e7f3f1;
+  --color-card-yellow: #faf5ed;
+  --color-card-blue: #eff7ff;
+  --color-accent-tint: rgba(38, 0, 255, .1);
+  --color-hover-white: rgba(255, 255, 255, .5);
+  --color-shadow: rgba(0, 0, 0, .5);
+}
+
+/* ===== Компонентный слой портфолио =====
+   Базовые селекторы по тегам ограничены классом .portfolio-page (тело лендингов),
+   чтобы не задеть разводную и страницы-кейсы. Классовые селекторы уникальны для
+   портфолио — оставлены глобальными. */
+@layer components {
+
+  /* --- Типографика и базовые теги (scoped) --- */
+  .portfolio-page {
+    @apply bg-white font-sans flex flex-col items-center pt-10 pb-20 overflow-auto
+           text-lg font-normal leading-[26px] text-black/[.87];
+  }
+  .portfolio-page table {
+    @apply border-separate border-spacing-x-0 border-spacing-y-[18px] mb-[14px];
+  }
+  .portfolio-page td { @apply pr-[26px]; }
+  .portfolio-page td p:not(:first-of-type) { @apply mt-2; }
+  .portfolio-page b { @apply font-bold; }
+  .portfolio-page p { @apply leading-[26px]; }
+  .portfolio-page li { @apply list-disc mt-1.5 leading-[26px] ml-[21px]; }
+  .portfolio-page h1 { @apply text-4xl font-bold leading-[50px]; }
+  .portfolio-page h2 { @apply text-4xl font-bold leading-[50px]; }
+  .portfolio-page h3 { @apply text-2xl font-bold leading-[34px]; }
+  .portfolio-page h4 { @apply text-lg font-bold leading-[26px]; }
+  .portfolio-page a {
+    @apply text-ink no-underline border-b border-black/25 font-normal leading-[21px]
+           text-left transition-[border-bottom] duration-100 ease-in-out;
+  }
+  .portfolio-page a:hover { @apply border-b border-ink; }
+  .portfolio-page div.card > a,
+  .portfolio-page div.description > a,
+  .portfolio-page div.navigation > a { @apply !border-b-0; }
+
+  .secondary-text { @apply text-black/40; }
+  .job-description h4 { @apply mb-3; }
+  .job-description h4:not(:first-of-type) { @apply mt-6; }
+  .job-description p { @apply mb-4; }
+  .job-description > div:first-child { @apply flex flex-col gap-1; }
+
+  /* --- Кнопки --- */
+  .button {
+    @apply max-w-max h-13 flex items-center justify-center gap-2 px-8 rounded-[26px]
+           border-0 text-white bg-primary cursor-pointer font-light;
+  }
+  .button:hover { @apply bg-primary-hover; }
+  .button:active { @apply bg-primary-active; }
+  .button-green { @apply bg-green; }
+  .button-green:hover { @apply bg-green-hover; }
+  .button-green:active { @apply bg-green-active; }
+  .button-red { @apply bg-red; }
+  .button-red:hover { @apply bg-red-hover; }
+  .button-red:active { @apply bg-red-active; }
+  .button-blue { @apply bg-blue; }
+  .button-blue:hover { @apply bg-blue-hover; }
+  .button-blue:active { @apply bg-blue-active; }
+
+  /* --- Каркас ---
+     .wrapper и .navigation используются и на страницах-кейсах с другими стилями,
+     поэтому скоуплены под .portfolio-page. */
+  .portfolio-page .wrapper { @apply flex flex-col gap-10 items-center; }
+  #portfolio { @apply hidden opacity-0 flex-col items-center gap-10; }
+  #cv { @apply hidden opacity-0 flex-col gap-10 w-[960px]; }
+
+  /* --- Карточки --- */
+  .card {
+    @apply w-[1000px] flex flex-col items-center gap-8 pt-10 px-10 pb-13 rounded-[32px];
+  }
+  .card-border { @apply border-4 border-accent-tint; }
+  .card-green { @apply bg-card-green; }
+  .card-yellow { @apply bg-card-yellow; }
+  .card-blue { @apply bg-card-blue; }
+
+  /* --- Блок «о себе» --- */
+  .about { @apply w-[640px] flex flex-col gap-6; }
+  .hello { @apply flex gap-5; }
+  .hello span { @apply flex flex-col gap-0.5; }
+  .hello img { @apply w-0 h-0 object-cover rounded-full; }
+  .links { @apply flex gap-6 items-center pr-9; }
+  .links .button { @apply px-9; }
+  .links span { @apply flex content-center gap-2; }
+
+  /* --- Превью проекта --- */
+  .thumbnail { @apply w-full h-auto; }
+  .thumbnail img, .thumbnail-mobile img { @apply w-full h-auto object-contain; }
+  .thumbnail-mobile { @apply hidden; }
+  .description { @apply w-[854px] flex flex-col; }
+
+  /* --- Резюме --- */
+  .job { @apply flex flex-row gap-10; }
+  .period { @apply text-sm leading-5 min-w-36 max-w-36 pt-[11px]; }
+  .period-mobile {
+    @apply hidden mt-1 px-3 py-1 rounded-[120px] bg-accent-tint w-fit;
+  }
+
+  /* --- Сегмент-контрол --- */
+  .segment-control {
+    @apply flex relative select-none rounded-[52px] bg-accent-tint;
+  }
+  .segment-control span {
+    @apply flex justify-center items-center rounded-[52px] z-[2];
+  }
+  .segment-control span:hover { @apply cursor-pointer bg-hover-white; }
+  .selected-segment { @apply absolute z-[1] bg-white rounded-[52px]; }
+  .selected { @apply pointer-events-none; }
+  .segment-transition {
+    transition: left 0.2s cubic-bezier(0.25, 1.25, 0.5, 1);
+  }
+
+  /* Переключатель языка */
+  .language { @apply flex items-center justify-end min-w-full; }
+  .language .segment-control { @apply p-[3px] gap-[3px] max-w-[153px] max-h-[34px]; }
+  .language .segment-control span {
+    @apply text-sm leading-5 min-w-18 max-w-18 min-h-7 gap-[5px];
+  }
+  .language .segment-control span img {
+    box-shadow: 0px 0px 2px 0px var(--color-shadow);
+  }
+  .language .selected-segment { @apply min-w-18 max-w-18 min-h-7 max-h-7; }
+  .language .selected-segment-first { @apply left-[3px]; }
+  .language .selected-segment-second { @apply left-[78px]; }
+
+  /* Переключатель Портфолио/Резюме */
+  .portfolio-page .navigation { @apply opacity-0 relative min-h-13; }
+  .portfolio-page .navigation .segment-control { @apply gap-1 p-1; }
+  .portfolio-page .navigation .segment-control span { @apply min-w-35 max-w-35 min-h-11; }
+  .portfolio-page .navigation .selected-segment-first { @apply left-1; }
+  .portfolio-page .navigation .selected-segment-second { @apply left-[148px]; }
+  .portfolio-page .navigation .selected-segment { @apply min-w-35 max-w-35 min-h-11; }
+
+  /* Кнопка PDF */
+  .pdf {
+    @apply flex gap-2 items-center justify-center bg-primary text-white min-h-[50px]
+           rounded-[32px] absolute top-px left-[310px] min-w-[50px] scale-0 opacity-0;
+  }
+  .pdf span { @apply flex items-center gap-2 opacity-0 font-light; }
+
+  /* Таблица описания проекта */
+  .description-table { @apply table w-full border-collapse my-[18px]; }
+  .row { @apply table-row; }
+  .cell { @apply table-cell align-top pt-0 pb-4; }
+  .header { @apply w-[110px]; }
+
+  /* ===== Страницы-кейсы (бывшая «система A»: styleGeneral + colors +
+     typography + stylePortfolio + styleCase; значения — итог их каскада).
+     Скоуп .case-page на <body> кейсов. ===== */
+  .case-page {
+    @apply text-ink font-sans text-base leading-[1.4] font-normal
+           flex flex-col items-center px-8 pb-11;
+  }
+  .case-page h1 { @apply text-4xl font-bold leading-[1.2] -mb-2 pt-12 pb-4; }
+  .case-page h2 { @apply text-[1.625rem] font-bold leading-[1.2] pt-2 pb-0; }
+  .case-page h3 { @apply text-xl font-bold leading-[1.4] pt-2 pb-0; }
+  .case-page h4 { @apply font-bold pt-2 pb-0; }
+  .case-page b { @apply font-bold; }
+  .case-page a { @apply text-ink cursor-pointer no-underline; }
+  .case-page a span { @apply border-b border-black/25; }
+  .case-page a:hover span { @apply border-ink; }
+  .case-page ol { @apply ml-6 flex flex-col gap-1 max-w-[65%]; }
+  .case-page ol > li { @apply list-decimal; }
+  .case-page ul > li { @apply list-disc pt-1 ml-5; }
+  .case-page ul, .case-page p { @apply w-[70%]; }
+  .case-page details { @apply pb-1; }
+  .case-page summary { @apply pb-1; }
+  /* Preflight ставит img { max-width: 100% } — в оригинале ограничения не было,
+     шириной картинок управляет scriptCase.js */
+  .case-page img { @apply max-w-none; }
+
+  .case-page .wrapper { @apply w-[1100px] max-w-[1200px] flex flex-col gap-0; }
+  .case-page .multiLine { @apply flex flex-col gap-6; }
+  .case-page .case { @apply flex flex-col gap-4; }
+  .case-page .case img { @apply py-2; }
+  .case-page .paragraph { @apply flex flex-col gap-2; }
+  .case-page .flexRow { @apply flex flex-row gap-8; }
+  .case-page .flexRow p { @apply w-[70%]; }
+  .case-page .flexRow img { @apply p-0; }
+  .case-page .navigation,
+  .case-page .navigation div,
+  .case-page .navigation a {
+    @apply flex justify-between pt-2 items-center gap-2;
+  }
+
+  /* ===== Markdown-страницы (бывший single-page.css).
+     Скоуп .md-page на <body>; контент рендерит content-single-page.js. ===== */
+  .md-page {
+    @apply font-sans text-base font-normal leading-6 text-black/[.87]
+           flex flex-col items-center pt-10 px-5 pb-12;
+  }
+  .md-page h1 { @apply text-[54px] font-bold leading-[54px] mb-6; }
+  .md-page h2 { @apply text-2xl font-bold leading-8 mb-4; }
+  .md-page h3 { @apply text-lg font-bold leading-6 mb-3; }
+  .md-page p { @apply mb-4; }
+  /* inline + max-w-none: возврат поведения до Preflight (display:block, max-width:100%) */
+  .md-page img { @apply inline my-2 max-w-none; }
+  .md-page a {
+    /* В оригинале у ссылок не задан цвет — браузерный синий, :visited тёмный */
+    color: rgb(0, 0, 238);
+    @apply no-underline border-b border-black/25 font-normal text-left
+           transition-[border-bottom] duration-100 ease-in-out;
+  }
+  .md-page a:hover { @apply border-ink; }
+  .md-page a:visited { @apply text-black/[.87]; }
+  .md-page li { @apply mt-1.5 leading-[26px] ml-[21px]; }
+  .md-page li > img { @apply mt-6; }
+  .md-page ul > li { @apply list-disc; }
+  .md-page ol > li { @apply list-decimal; }
+  .md-page ul, .md-page ol { @apply mb-6; }
+  .md-page .back { @apply max-w-[800px] w-full my-8; }
+  .md-page .content { @apply max-w-[800px]; }
+  .md-page .image img { @apply w-full h-auto; }
+}
+
+/* ===== Анимации (перенос animation.css + классы из style-portfolio.css) ===== */
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes hide-to-left {
+  0% { margin-left: 0px; opacity: 1; }
+  100% { margin-left: -40px; opacity: 0; }
+}
+@keyframes hide-to-right {
+  0% { margin-left: 0px; opacity: 1; }
+  100% { margin-left: 40px; opacity: 0; }
+}
+@keyframes show-pdf {
+  0% { scale: 0; opacity: 0; }
+  50% { scale: 1; min-width: 50px; }
+  100% { scale: 1; opacity: 1; min-width: 100px; }
+}
+@keyframes show-pdf-span { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes hide-pdf {
+  0% { margin-left: 0px; opacity: 1; }
+  100% { margin-left: -6px; opacity: 0; }
+}
+
+.hide-to-left { animation: hide-to-left 150ms ease-in-out; }
+.hide-to-right { animation: hide-to-right 150ms ease-in-out; }
+.fadeIn { animation: fadeIn 200ms ease-in-out forwards; animation-delay: 200ms; }
+.show-pdf-animation {
+  animation: show-pdf 150ms cubic-bezier(1, 1.2, 1, 1.2) forwards;
+  animation-delay: 125ms;
+}
+.show-pdf-span-animation {
+  animation: show-pdf-span 100ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+.hide-pdf-animation { animation: hide-pdf 100ms ease-in-out forwards; }
+
+/* ===== Адаптив (перенос @media из style-portfolio.css и typography-portfolio.css) ===== */
+@media only screen and (max-width: 1072px) {
+  .portfolio-page { @apply text-base leading-6; }
+  .portfolio-page a { @apply text-base leading-6; }
+  .portfolio-page h2 { @apply text-2xl font-bold leading-8; }
+  .portfolio-page h3 { @apply text-base font-bold leading-6; }
+  .link { @apply text-base leading-6; }
+  .job-description h3 { @apply text-2xl font-bold leading-8; }
+  .job-description div:nth-of-type(1) p:nth-of-type(1) { @apply mb-0; }
+  .job-description div:nth-of-type(1) { @apply mb-2; }
+
+  .thumbnail { @apply hidden; }
+  .thumbnail-mobile { @apply block w-full h-auto; }
+  .portfolio-page .wrapper { @apply w-full overflow-hidden gap-10 items-start; }
+  .language { @apply justify-center; }
+  .card-border { @apply border-0; }
+  .card { @apply w-full rounded-none pt-0 px-6 pb-0; }
+  .portfolio .card { @apply p-6; }
+  .about, #cv { @apply w-full; }
+  .portfolio-page li { @apply mt-0 ml-4; }
+  .links { @apply flex-col items-start gap-[18px]; }
+  .portfolio-page .navigation { @apply pl-6; }
+  .pdf { @apply left-[334px]; }
+  .description { @apply w-full; }
+  .description-table { @apply flex flex-col gap-[18px]; }
+  .row { @apply flex flex-col gap-0.5; }
+  .cell { @apply block w-full p-0; }
+  .job { @apply px-6; }
+  .period { @apply hidden; }
+  .period-mobile { @apply block; }
+}
+
+@media only screen and (max-width: 480px) {
+  .portfolio-page .navigation {
+    @apply flex flex-col items-center gap-6 min-h-13 w-full p-0;
+  }
+  .portfolio-page .navigation a { @apply min-w-25; }
+  .pdf { @apply top-auto left-auto min-w-[50px] scale-0 opacity-0; }
+  .cv { @apply mt-[50px]; }
+}
+
+/* Адаптив markdown-страниц (перенос @media из single-page.css) */
+@media (max-width: 600px) {
+  .md-page h1 { @apply text-4xl leading-9 mb-6; }
+  .md-page .content { @apply max-w-full; }
+}

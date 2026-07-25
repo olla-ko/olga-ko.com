@@ -1,0 +1,128 @@
+---
+# Разводная лежит в корневой папке (не в /home/), чтобы её относительные ссылки
+# (portfolio-ru/, tailwind.css, cat-in-cap/…) работали без изменений.
+# Корень сайта / — редирект на портфолио, см. src/pages/root-redirect.njk.
+permalink: "/home.html"
+---
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ольга Коновалова — Product Designer, UX/UI дизайнер</title>
+  <meta name="title" content="Ольга Коновалова — Product Designer, UX/UI дизайнер">
+  <meta name="description" content="Разделы: портфолио, Большая библиотека Контура, каллиграфия и леттеринг, иллюстрация, старый блог.">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="tailwind.css">
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(95434312, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/95434312" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+
+<body class="min-h-screen bg-white font-sans text-ink antialiased flex items-center justify-center px-6 py-16">
+  <main class="w-full max-w-lg">
+    <header class="mb-10">
+      <h1 class="text-2xl font-bold tracking-tight">Ольга Коновалова</h1>
+      <p class="mt-1 text-sm text-black/50">Product Designer, UX/UI дизайнер</p>
+    </header>
+
+    <nav aria-label="Разделы сайта">
+      <ul class="divide-y divide-black/10">
+        <li>
+          <a href="portfolio-ru/" class="group flex items-center justify-between gap-4 py-4">
+            <span class="text-base font-medium transition-colors group-hover:text-brand">Портфолио</span>
+            <span aria-hidden="true" class="text-brand transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="big-library/" class="group flex items-center justify-between gap-4 py-4">
+            <span class="text-base font-medium transition-colors group-hover:text-brand">Большая библиотека Контура</span>
+            <span aria-hidden="true" class="text-brand transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="calligraphy-and-lettering/" class="group flex items-center justify-between gap-4 py-4">
+            <span class="text-base font-medium transition-colors group-hover:text-brand">Каллиграфия и леттеринг</span>
+            <span aria-hidden="true" class="text-brand transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="illustration/" class="group flex items-center justify-between gap-4 py-4">
+            <span class="text-base font-medium transition-colors group-hover:text-brand">Иллюстрация</span>
+            <span aria-hidden="true" class="text-brand transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="cat-in-cap/" class="group flex items-center justify-between gap-4 py-4">
+            <span class="text-base font-medium transition-colors group-hover:text-brand">Старый блог cat-in-cap.ru</span>
+            <span aria-hidden="true" class="text-brand transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <ul class="mb-4 pl-4 border-l border-black/10" aria-label="Старые кейсы">
+            <li>
+              <a href="cat-in-cap/brozex.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Интернет-магазин Brozex</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/library.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Библиотека дизайнеров</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/naudoc.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Система Naudoc</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/naumensd.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Система Naumen SD</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/qutim.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Мессенджер Qutim</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/smartnut.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Сервис SmartNUT</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="cat-in-cap/transport.htm" class="group flex items-center justify-between gap-4 py-2">
+                <span class="text-sm text-black/60 transition-colors group-hover:text-brand">Сервис «Где мой транспорт?»</span>
+                <span aria-hidden="true" class="text-sm text-brand/60 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait)
+  {
+    body {
+      width: 85%;
+      margin: 100px auto;
+    }
+    .bg-image {
+      width: 100%;
+    }
+    .bg-image > img {
+      display: block;
+      visibility: hidden;
+      width: 100%;
+    }
+    .title {
+      height: auto;
+    }
+    .story {
+      display: none;
+    }
+    .story_mobile_1 {
+      display: block;
+      margin-top: 100px;
+      background-image: url(story_mobile_1.png);
+    }
+    .story_mobile_2 {
+      display: block;
+      margin-top: 50px;
+      background-image: url(story_mobile_2.png);
+    }
+    .story_mobile_3 {
+      display: block;
+      margin-top: 50px;
+      background-image: url(story_mobile_3.png);
+    }
+    .just-cat {
+      margin-top: 50px;
+      height: auto;
+      width: 60%;
+    }
+    .zaglad {
+      margin-top: 50px;
+      height: auto;
+    }
+    .yandex {
+      display: block;
+      clear: both;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+    }
+    .saved {
+      margin-top: 100px;
+      height: auto;
+      width: 60%;
+    }
+    .money {
+      margin-top: 30px;
+    }
+    .cat {
+      margin-top: 150px;
+      margin-bottom: 200px;
+      height: auto;
+      width: 20%;
+    }
+}

@@ -1,0 +1,14 @@
+$('div.summ:empty').hide();
+$("div.summ:contains('1')").addClass("one");
+$("div.summ:contains('2')").addClass("two");
+$("div.summ:contains('3')").addClass("three");
+$("div.summ:contains('4')").addClass("four");
+$("div.summ:contains('5')").addClass("five");
+$("div.summ:contains('6')").addClass("six");
+$("div.summ:contains('7')").addClass("seven");
+$("div.summ:contains('8')").addClass("eight");
+$("div.summ:contains('9')").addClass("nine");
+$("div.summ:contains('01')").addClass("zero-1");
+$("div.summ:contains('02')").addClass("zero-2");
+$("div.summ:contains('03')").addClass("zero-3");
+$("div.summ:contains('04')").addClass("zero-4");

@@ -1,0 +1,45 @@
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 736px)
+  /* and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) */
+  {
+    body {
+      width: 70%;
+      margin: 100px auto;
+    }
+    .bg-image {
+      width: 100%;
+    }
+    .bg-image > img {
+      display: block;
+      visibility: hidden;
+      width: 100%;
+    }
+    .title {
+      width: 520px;
+      height: 160px;
+    }
+    .crazy_plans {
+      display: none;
+    }
+    .crazy_plans_mobile_1 {
+      display: block;
+      margin-top: 150px;
+      background-image: url(crazy_plans_mobile_1.png);
+    }
+    .crazy_plans_mobile_2 {
+      display: block;
+      margin-top: 50px;
+      background-image: url(crazy_plans_mobile_2.png);
+    }
+    .links {
+      text-align: center;
+      margin-top: 200px;
+      margin-bottom: 200px;
+    }
+    .links > p {
+      margin-bottom: 90px;
+      font-size: 50px;
+    }
+}

@@ -1,0 +1,73 @@
+body {
+  width: 1000px;
+  margin: 50px auto;
+}
+.bg-image {
+  display: block;
+  clear: both;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-image > img {
+  display: none;
+}
+.title {
+  width: 459px;
+  height: 132px;
+  background-image: url(title.png);
+}
+.story {
+  margin-top: 50px;
+  width: 746px;
+  height: 644px;
+  background-image: url(story.png);
+}
+.story_mobile_1 {
+  display: none;
+}
+.story_mobile_2 {
+  display: none;
+}
+.story_mobile_3 {
+  display: none;
+}
+.just-cat {
+  margin-top: 50px;
+  width: 235px;
+  height: 356px;
+  background-image: url(just-cat.png);
+}
+.zaglad {
+  margin-top: 20px;
+  width: 415px;
+  height: 133px;
+  background-image: url(zaglad.png);
+}
+.yandex {
+  display: block;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  width: 500px;
+  height: 301px;
+}
+.saved {
+  margin-top: 70px;
+  width: 235px;
+  height: 21px;
+  background-image: url(saved.png);
+}
+.money {
+  margin-top: 20px;
+  text-align: center;
+}
+.cat {
+  margin-top: 100px;
+  margin-bottom: 120px;
+  width: 88px;
+  height: 54px;
+  background-image: url(cat.png);
+}

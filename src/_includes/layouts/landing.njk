@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+{% set root = "../" %}{% include "partials/head.njk" %}
+</head>
+
+ <body class="portfolio-page">
+  <div class="wrapper">
+    <div class="language">
+      <div class="segment-control">
+        <div class="selected-segment selected-segment-{% if lang == 'ru' %}first{% else %}second{% endif %}" id="LangSelectedSegment"></div>
+        <span id="segment-rus"{% if lang == 'ru' %} class="selected"{% endif %}><img src="../assets/flagRU.svg">RU</span>
+        <span id="segment-eng"{% if lang != 'ru' %} class="selected"{% endif %}><img src="../assets/flagUK.svg">EN</span>
+      </div>
+    </div>
+    <div class="card-border card">
+      <div class="about">
+        {{ content | safe }}
+        <div class="links">
+          <span>
+            <img src="../assets/icon-tg.svg">
+            <a href="https://t.me/cat_in_cap">t.me/cat_in_cap</a>
+          </span>
+          <span>
+            <img src="../assets/Mail.svg">
+            <a href="mailto:to.olga.ko@gmail.com">to.olga.ko@gmail.com</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="navigation fadeIn" id="navigation">
+      <div class="segment-control">
+        <div class="selected-segment selected-segment-first" id="NavSelectedSegment"></div>
+        <span id="segment-portfolio" class="selected">{{ navPortfolio }}</span>
+        <span id="segment-cv">{{ navCv }}</span>
+      </div>
+      <a href="../assets/CV-Olga-Konovalova-{{ lang }}.pdf" download>
+        <div class="pdf" id="pdf">
+          <span>
+            <img src="../assets/download.svg">
+            PDF
+          </span>
+        </div>
+      </a>
+    </div>
+    <div class="portfolio fadeIn" id="portfolio">{% portfolioCards lang %}</div>
+    <div class="cv fadeIn" id="cv">{% cvJobs lang %}</div>
+  </div>
+<script src="../segment-control.js"></script>
+<script src="../avatar.js"></script>
+</body>
+</html>

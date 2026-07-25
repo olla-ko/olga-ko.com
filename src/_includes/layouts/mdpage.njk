@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+{% include "partials/head.njk" %}
+</head>
+
+    <body class="md-page">
+{% if back %}        <span class="back">
+            <a href="{{ backHref | default('https://olga-ko.com/portfolio-ru/') }}" style="border: none;">← </a>
+            <a href="{{ backHref | default('https://olga-ko.com/portfolio-ru/') }}">{{ backText | default('Вернуться к портфолио') }}</a>
+        </span>
+{% endif %}        <div id="content" class="content">{% singlePage mdSource %}</div>
+{% if back %}        <span class="back">
+            <a href="{{ backHref | default('https://olga-ko.com/portfolio-ru/') }}" style="border: none;">← </a>
+            <a href="{{ backHref | default('https://olga-ko.com/portfolio-ru/') }}">{{ backText | default('Вернуться к портфолио') }}</a>
+        </span>
+{% endif %}    </body>
+</html>

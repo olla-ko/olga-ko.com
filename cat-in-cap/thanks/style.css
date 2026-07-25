@@ -1,0 +1,46 @@
+body {
+  width: 1000px;
+  margin: 50px auto;
+  font-family: Georgia;
+}
+a {
+  color: #3072C4;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.bg-image {
+  display: block;
+  clear: both;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.title {
+  width: 260px;
+  height: 80px;
+  background-image: url(title.png);
+}
+.crazy_plans {
+  margin-top: 70px;
+  width: 712px;
+  height: 510px;
+  background-image: url(crazy_plans.png);
+}
+.crazy_plans_mobile_1 {
+  display: none;
+}
+.crazy_plans_mobile_2 {
+  display: none;
+}
+.links {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.links > p {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
