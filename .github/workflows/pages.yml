@@ -1,0 +1,66 @@
+# Деплой на GitHub Pages через Actions (вместо «deploy from branch»).
+# Причина: сайт надо СОБРАТЬ перед публикацией (Tailwind CSS + Eleventy + проверка
+# ссылок) — встроенный «deploy from branch» этого не умеет, он публикует ветку как
+# есть. Payload крупный (~280 МБ, в основном архив блога cat-in-cap), но в лимиты
+# Pages (1 ГБ на сайт, 100 МБ на файл) укладывается.
+#
+# Требование: Settings → Pages → Source = «GitHub Actions».
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# один деплой за раз; начатый прод-деплой не отменяем
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Tailwind собирается здесь, а не коммитится в репозиторий
+      - name: Install deps
+        run: npm ci
+
+      - name: Build CSS (site + blog)
+        run: npm run build:css
+
+      # Eleventy: генерирует мигрированные страницы, остальное копирует как есть
+      - name: Build site (Eleventy)
+        run: npm run build:site
+
+      # битые локальные ссылки валят деплой до публикации
+      - name: Check links
+        run: cd _site && python3 ../scripts/check_links.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 600000 # максимум, разрешённый action (10 минут)

@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+._*
+
+# Node / Tailwind build tooling
+node_modules/
+
+# Собранные CSS — теперь собираются в CI (см. .github/workflows/pages.yml).
+# Локально: npm run build:css
+/tailwind.css
+/cat-in-cap/blog/tailwind.css
+
+# Editor / tooling
+.vscode/
+.idea/
+
+# Local preview server config (Claude Code)
+.claude/launch.json
+
+# Выход Eleventy (собирается в CI)
+_site/
+
+# Сборка админки (Railway собирает сам)
+admin/dist/
