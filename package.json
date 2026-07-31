@@ -11,7 +11,8 @@
     "watch:css:blog": "tailwindcss -i ./styles/cat-in-cap.src.css -o ./cat-in-cap/blog/tailwind.css --watch",
     "build:site": "eleventy",
     "build": "npm run build:css && npm run build:site",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "test": "node --test \"admin/test/**/*.test.js\" \"test/**/*.test.js\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

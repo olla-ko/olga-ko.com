@@ -28,6 +28,7 @@ module.exports = function (eleventyConfig) {
     "illustration",
     "big-library",
     "calligraphy-and-lettering",
+    "design-notes",           // самостоятельный статичный сайт со своими стилями
     "cat-in-cap",            // архив старого сайта + блог (не мигрируем никогда)
     "CNAME",
     // корневые JS, которые подключают страницы

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/nikita/Documents/GitHub/olga-ko.com log --oneline -5)",
+      "Bash(grep -v \"^/Users/nikita/Documents/GitHub/olga-ko.com/[^/]*\\\\.css$\")",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(find /Users/nikita/Documents/GitHub/olga-ko.com/img/portfolio -type f -name \"*.png\" | sed 's/.*\\\\///' | sort > /tmp/portfolio_files.txt && grep -o \"img/portfolio/[^\\\\\"]*\" /Users/nikita/Documents/GitHub/olga-ko.com -r --include=\"*.html\" | sed 's/.*img\\\\/portfolio\\\\///' | sort | uniq > /tmp/referenced_files.txt && echo \"Total portfolio files: $\\(wc -l < /tmp/portfolio_files.txt\\)\" && echo \"Referenced in HTML: $\\(grep -c . /tmp/referenced_files.txt\\)\" && comm -23 /tmp/portfolio_files.txt /tmp/referenced_files.txt | head -10)",
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}\\\\b|rgba?\\\\\\(' style-portfolio.css)",
+      "Bash(grep -oE '#[0-9a-fA-F]{3,8}\\\\b|rgba?\\\\\\([^\\)]*\\\\\\)' style-portfolio.css)"
+    ]
+  }
+}

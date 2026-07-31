@@ -13,6 +13,12 @@ const fs = require("fs");
 const express = require("express");
 const cookieSession = require("cookie-session");
 const bake = require("../lib/bake.js");
+const { isValidTarget, saveDecision } = require("./lib/save.js");
+const { computeHasDraft } = require("./lib/drafts.js");
+const { buildVersionList, dedupeVersions, checkDeletable, planVersionDeletion } = require("./lib/versions.js");
+const {
+  isCommitsTruncated, isFilesTruncated, aheadShas, changedFilesAhead, isReachableFromMain,
+} = require("./lib/compare.js");
 
 const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
@@ -160,26 +166,20 @@ async function getCatalog(withDrafts) {
       const { data } = await api.git.getTree({ owner: OWNER, repo: REPO, tree_sha: ref, recursive: "true" });
       return new Map(data.tree.filter((t) => t.type === "blob").map((t) => [t.path, t.sha]));
     };
-    // «не опубликовано» = у файла есть НАСТОЯЩИЙ черновик: содержимое на drafts
-    // отличается от main И это отличие — из-за правки, реально ушедшей вперёд в
-    // drafts (файл есть в diff main...drafts). Одной симметричной разницы blob'ов
-    // мало: если файл правили напрямую в main, drafts просто отстаёт — это не
-    // черновик. compare().files даёт список файлов, изменённых в drafts впереди main.
     const [mainTree, draftTree, cmp] = await Promise.all([
       treeOf(MAIN),
       treeOf(DRAFTS),
       api.repos.compareCommitsWithBasehead({ owner: OWNER, repo: REPO, basehead: `${MAIN}...${DRAFTS}` }),
     ]);
-    const changedAheadInDrafts = new Set((cmp.data.files || []).map((f) => f.filename));
-    // compare ограничен GitHub-ом (≤250 коммитов / ≤300 файлов). При усечении
-    // (drafts ушёл далеко вперёд) список files неполон — падаем на симметричную
-    // разницу, чтобы не СКРЫТЬ настоящий черновик (лучше лишний бейдж, чем потерять).
-    const truncated = cmp.data.total_commits > cmp.data.commits.length || (cmp.data.files || []).length >= 300;
-    for (const f of files) {
-      const m = mainTree.get(f.path);
-      const d = draftTree.get(f.path);
-      f.hasDraft = Boolean(m && d && m !== d && (truncated || changedAheadInDrafts.has(f.path)));
-    }
+    // Правила бейджа «не опубликовано» — в admin/lib/drafts.js
+    const hasDraft = computeHasDraft({
+      paths: files.map((f) => f.path),
+      mainTree,
+      draftTree,
+      changedAheadInDrafts: changedFilesAhead(cmp.data),
+      truncated: isFilesTruncated(cmp.data),
+    });
+    for (const f of files) f.hasDraft = hasDraft.get(f.path);
   }
   return files;
 }
@@ -304,67 +304,20 @@ app.get("/api/versions", requireAuth, async (req, res, next) => {
       const { data } = await api.repos.listCommits({ owner: OWNER, repo: REPO, path: p, sha: branch, per_page: 30 });
       return data;
     };
-    // В ленте — только осмысленные версии:
-    //  1) реальная история файла на сайте (коммиты main, менявшие файл);
-    //  2) настоящие неопубликованные черновики (коммиты drafts, реально ушедшие
-    //     вперёд относительно main — их даёт compare одним запросом).
-    // Коммиты drafts, которые уже достижимы из main (например, затянутые туда
-    // случайным мержем всей ветки drafts), в ленту НЕ попадают: это не отдельная
-    // версия файла, а «мусор» истории, и удалить его всё равно нельзя (он в main).
     const [mainCommits, draftCommits, cmp] = await Promise.all([
       listFor(MAIN),
       listFor(DRAFTS),
       api.repos.compareCommitsWithBasehead({ owner: OWNER, repo: REPO, basehead: `${MAIN}...${DRAFTS}` }),
     ]);
-    const inMain = new Set(mainCommits.map((c) => c.sha));
-    const onlyInDrafts = new Set(cmp.data.commits.map((c) => c.sha)); // реально впереди main
-    // при усечении compare (>250 коммитов впереди) список ahead неполон — падаем на
-    // «не в истории файла на main», чтобы не СКРЫТЬ настоящий черновик из ленты.
-    const truncated = cmp.data.total_commits > cmp.data.commits.length;
-    const genuineDrafts = draftCommits.filter((c) => (truncated ? !inMain.has(c.sha) : onlyInDrafts.has(c.sha)));
-    const currentSha = mainCommits[0] ? mainCommits[0].sha : null; // это сейчас на сайте
-    const seen = new Set();
-    const versions = [];
-    for (const c of [...mainCommits, ...genuineDrafts]) {
-      if (seen.has(c.sha)) continue;
-      seen.add(c.sha);
-      const message = c.commit.message;
-      // служебная синхронизация drafts после публикации — дубликат, не показываем
-      if (message.startsWith("Sync draft after publish:")) continue;
-      versions.push({
-        sha: c.sha,
-        date: c.commit.committer?.date || c.commit.author?.date || null,
-        message,
-        published: inMain.has(c.sha),
-        isCurrent: c.sha === currentSha,
-        viaAdmin: message.includes("(via admin)"),
-      });
-    }
-    versions.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // схлопываем подряд идущие версии с идентичным содержимым файла
-    // (типовой дубль: черновик + его публикация); из пары предпочитаем
-    // опубликованную, флаги объединяем
+    // Правила ленты — в admin/lib/versions.js
+    const versions = buildVersionList({
+      mainCommits,
+      draftCommits,
+      aheadShas: aheadShas(cmp.data),
+      truncated: isCommitsTruncated(cmp.data),
+    });
     const blobs = await fileBlobShas(p, versions.map((v) => v.sha));
-    versions.forEach((v, i) => { v.blobSha = blobs[i]; });
-    const deduped = [];
-    for (const v of versions) {
-      const prev = deduped[deduped.length - 1];
-      if (prev && prev.blobSha && v.blobSha && prev.blobSha === v.blobSha) {
-        if (!prev.published && v.published) {
-          v.published = true;
-          v.isCurrent = prev.isCurrent || v.isCurrent;
-          v.viaAdmin = prev.viaAdmin && v.viaAdmin;
-          deduped[deduped.length - 1] = v;
-        } else {
-          prev.isCurrent = prev.isCurrent || v.isCurrent;
-          prev.published = prev.published || v.published;
-        }
-        continue;
-      }
-      deduped.push(v);
-    }
-    res.json(deduped);
+    res.json(dedupeVersions(versions, blobs));
   } catch (e) { next(e); }
 });
 
@@ -383,19 +336,22 @@ app.post("/api/save", requireAuth, async (req, res, next) => {
       invalidateCatalog();
       return res.json({ ok: true, mode: MODE });
     }
-    // писать можно только в main (публикация) или drafts (черновик)
-    if (target !== MAIN && target !== DRAFTS) return res.status(400).json({ error: "Недопустимая ветка" });
+    if (!isValidTarget(target)) return res.status(400).json({ error: "Недопустимая ветка" });
     if (target === DRAFTS) await storage.ensureDraftsBranch();
     const current = await storage.read(p, target);
-    // оптимистичная блокировка: если файл на целевой ветке изменился с тех пор, как
-    // клиент его загрузил (sha), не затираем чужую правку молча. Исключение —
-    // черновик «от опубликованного»: клиент основан на актуальном main, а на drafts
-    // лежит устаревшая копия, которую он законно перезапишет.
-    if (current && sha && current.sha !== sha) {
-      const mainNow = target === DRAFTS ? await storage.read(p, MAIN) : null;
-      if (!(mainNow && mainNow.sha === sha)) {
-        return res.status(409).json({ error: "Версия изменилась с момента загрузки — обновите страницу и повторите" });
-      }
+    // Оптимистичная блокировка; правила — в admin/lib/save.js. Чтение main
+    // дорогое, поэтому делаем его только когда модуль об этом просит.
+    const currentSha = current ? current.sha : null;
+    let decision = saveDecision({ target, clientSha: sha, currentSha });
+    if (decision === "need-main-sha") {
+      const mainNow = await storage.read(p, MAIN);
+      decision = saveDecision({
+        target, clientSha: sha, currentSha,
+        mainSha: mainNow ? mainNow.sha : null,
+      });
+    }
+    if (decision === "conflict") {
+      return res.status(409).json({ error: "Версия изменилась с момента загрузки — обновите страницу и повторите" });
     }
     const result = await storage.write(p, content, {
       branch: target,
@@ -430,13 +386,9 @@ app.post("/api/version/delete", requireAuth, async (req, res, next) => {
     await storage.ensureDraftsBranch();
     const api = await gh();
 
-    // опубликованное (достижимое из main) не удаляем
     const { data: cmp } = await api.repos.compareCommitsWithBasehead({
       owner: OWNER, repo: REPO, basehead: `${MAIN}...${sha}`,
     });
-    if (cmp.status === "identical" || cmp.status === "behind") {
-      return res.status(400).json({ error: "Эта версия опубликована — удалять можно только черновики" });
-    }
 
     // цепочка drafts от tip до целевого коммита
     const kept = []; // коммиты новее целевого, tip → ...
@@ -452,41 +404,37 @@ app.post("/api/version/delete", requireAuth, async (req, res, next) => {
       }
     }
     if (!target) return res.status(404).json({ error: "Версия не найдена в ветке черновиков" });
-    if (!target.parents.length) return res.status(400).json({ error: "Первый коммит репозитория удалить нельзя" });
 
-    // merge-коммит в цепочке нельзя пересобрать линейно без потери истории второй
-    // ветки — отказываем (чинится сбросом drafts к main, см. РУКОВОДСТВО).
-    if (target.parents.length > 1 || kept.some((c) => c.parents.length > 1)) {
-      return res.status(400).json({ error: "В цепочке черновиков есть merge-коммит — удалить через админку нельзя" });
-    }
-
-    // страховка: коммит должен менять только этот файл
     const { data: full } = await api.repos.getCommit({ owner: OWNER, repo: REPO, ref: sha });
-    if ((full.files || []).some((f) => f.filename !== p)) {
-      return res.status(400).json({ error: "Коммит затрагивает другие файлы — удалить через админку нельзя" });
-    }
+    // Все гарды — в admin/lib/versions.js
+    const refusal = checkDeletable({
+      reachableFromMain: isReachableFromMain(cmp),
+      targetCommit: target,
+      kept,
+      commitFiles: full.files,
+      path: p,
+    });
+    if (refusal) return res.status(400).json({ error: refusal.error });
 
     const parentSha = target.parents[0].sha;
     const blobs = await fileBlobShas(p, [sha, parentSha, ...kept.map((c) => c.sha)]);
-    const blobX = blobs[0]; // удаляемое содержимое
-    const blobW = blobs[1]; // содержимое до него (null — файла не было)
 
-    // пересобираем ветку: oldest → newest поверх родителя целевого коммита
+    // План пересборки (oldest → newest) считает admin/lib/versions.js,
+    // здесь только выполняем его через GitHub API.
     let newParent = parentSha;
-    for (let i = kept.length - 1; i >= 0; i--) {
-      const orig = kept[i];
-      let treeSha = orig.commit.tree.sha;
-      if (blobX && blobs[2 + i] === blobX) {
+    for (const step of planVersionDeletion({ kept, blobs })) {
+      let treeSha = step.treeSha;
+      if (step.overrideBlob || step.removesFile) {
         const { data: tree } = await api.git.createTree({
           owner: OWNER, repo: REPO, base_tree: treeSha,
-          tree: [{ path: p, mode: "100644", type: "blob", sha: blobW }],
+          tree: [{ path: p, mode: "100644", type: "blob", sha: step.overrideBlob }],
         });
         treeSha = tree.sha;
       }
       const { data: commit } = await api.git.createCommit({
         owner: OWNER, repo: REPO,
-        message: orig.commit.message, tree: treeSha, parents: [newParent],
-        author: orig.commit.author, committer: orig.commit.committer,
+        message: step.commit.commit.message, tree: treeSha, parents: [newParent],
+        author: step.commit.commit.author, committer: step.commit.commit.committer,
       });
       newParent = commit.sha;
     }
